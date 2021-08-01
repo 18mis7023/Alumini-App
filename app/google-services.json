@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "844337343359",
+    "project_id": "alumini-reconnect",
+    "storage_bucket": "alumini-reconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844337343359:android:1485efdb561bf347f1884a",
+        "android_client_info": {
+          "package_name": "com.vitap.aluminireconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844337343359-jnv7nsnjb0cats3vur96qq8du7m72vjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0MHUADi3R4lxoc-4be-HUzsz8ETqdUDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844337343359-jnv7nsnjb0cats3vur96qq8du7m72vjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
