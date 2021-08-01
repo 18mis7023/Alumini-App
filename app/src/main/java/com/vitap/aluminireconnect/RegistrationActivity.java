@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.vitap.aluminireconnect.Fragments.AccademicDetailsFragment;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -38,8 +40,8 @@ public class RegistrationActivity extends AppCompatActivity {
         Password = "Password";
 
         //Call this method when data is ready
-        CreateNewUser(AluminiEmail,Password);
-
+//        CreateNewUser(AluminiEmail,Password);
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new AccademicDetailsFragment()).commit();
     }
 
     private void SetUserData() {
