@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.vitap.aluminireconnect.Fragments.AccademicDetailsFragment;
+import com.vitap.aluminireconnect.Fragments.RegistrationFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +41,8 @@ public class RegistrationActivity extends AppCompatActivity {
         Password = "Password";
 
         //Call this method when data is ready
-//        CreateNewUser(AluminiEmail,Password);
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new AccademicDetailsFragment()).commit();
+        //CreateNewUser(AluminiEmail,Password);
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new RegistrationFragment()).commit();
     }
 
     private void SetUserData() {
