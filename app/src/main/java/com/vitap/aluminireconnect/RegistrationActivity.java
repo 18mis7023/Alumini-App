@@ -60,7 +60,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //Call this method when data is ready
         //CreateNewUser(AluminiEmail,Password);
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new RegistrationFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new AccademicDetailsFragment()).commit();
     }
 
     private void SetUserData() {

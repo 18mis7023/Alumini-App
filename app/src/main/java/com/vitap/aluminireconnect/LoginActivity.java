@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("Login ", "signInWithEmail:success");
                         Toast.makeText(LoginActivity.this, "LogIn success", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this,RegistrationActivity.class));
                     } else {
                         Log.d("login", "signInWithEmail:failure", task.getException());
                         if (task.getException().toString().contains("no user")){

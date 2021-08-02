@@ -105,10 +105,48 @@
         android:hint="School(Department)"
         android:id="@+id/school"/>
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mobile No"
+        android:layout_below="@+id/school"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mobile_number"
+            android:inputType="number"
+            android:background="@drawable/background_button"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_email_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Id"
+        android:layout_below="@+id/outlined_mobile_number"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_id"
+            android:background="@drawable/background_button"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:layout_width="300px"
         android:layout_height="wrap_content"
-        android:layout_below="@id/school"
+        android:layout_below="@id/outlined_email_id"
         android:layout_alignParentRight="true"
         android:layout_margin="20px"
         android:layout_marginStart="20px"

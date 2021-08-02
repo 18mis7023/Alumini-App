@@ -78,42 +78,72 @@
         android:id="@+id/father_mobile_number"
         android:maxLength="12"
         android:inputType="number"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_mother_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mother Name"
+        android:layout_below="@+id/father_mobile_number"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="#ffffff"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mother_name"
+            android:inputType="number"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_mother_mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mother Mobile Number"
+        android:layout_below="@+id/outlined_mother_name"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="#ffffff"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mother_mobile_number"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_permanent_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Permanent Address"
+        android:layout_below="@+id/outlined_mother_mobile_number"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="#ffffff"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/permanent_address"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:layout_width="300px"
         android:layout_height="wrap_content"
-        android:layout_below="@id/father_mobile_number"
+        android:layout_below="@id/outlined_permanent_address"
         android:layout_margin="20px"
         android:layout_alignParentRight="true"
         android:id="@+id/personal_next"
         android:text="Next"
         android:background="@drawable/background_button"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/personal_next"
-        android:orientation="horizontal">
-        <TextureView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/temp1"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/temp2"
-            />
-        <TextureView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/temp3"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/temp4"
-            />
-    </LinearLayout>
 
 
 
