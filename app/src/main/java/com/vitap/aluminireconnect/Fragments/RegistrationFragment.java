@@ -51,10 +51,10 @@ public class RegistrationFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
+
         Email = view.findViewById(R.id.alumini_email);
         Passwd = view.findViewById(R.id.password);
         ConformPasswd = view.findViewById(R.id.conform_password);
@@ -103,10 +103,15 @@ public class RegistrationFragment extends Fragment {
                 Toast.makeText(getContext(), "User created", Toast.LENGTH_SHORT).show();
                 Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
                 Toast.makeText(getContext(), "Please verify email", Toast.LENGTH_LONG).show();
+                assert getFragmentManager() != null;
                 getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit();
             } else {
                 progressDialog.dismiss();
-                Toast.makeText(getContext(), "error " + task.getException(), Toast.LENGTH_SHORT).show();
+                Log.e("Registration error : ", Objects.requireNonNull(task.getException()).toString());
+                if (task.getException().toString().contains("already")) {
+                    Toast.makeText(getContext(), "Email already exists", Toast.LENGTH_SHORT).show();
+                }else Toast.makeText(getContext(), "Error : "+task.getException(), Toast.LENGTH_SHORT).show();
+
             }
 
         });
