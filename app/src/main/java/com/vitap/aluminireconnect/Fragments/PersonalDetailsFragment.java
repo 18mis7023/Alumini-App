@@ -56,6 +56,7 @@ public class PersonalDetailsFragment extends Fragment {
                 UserDetails.put("MothersMobileNumber",MotherMobileNumber.getText().toString());
                 UserDetails.put("PermanentAddress",PermanentAddress.getText().toString());
 
+
                 db.collection("Users")
                         .document("6SX37hFaW8cSS4Ut8b5DaRWzXr92")
                         .update(UserDetails)

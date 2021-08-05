@@ -65,45 +65,83 @@
         android:layout_margin="20px"
         android:weightSum="2"
         android:id="@+id/name_layout">
-        <EditText
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlined_first_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="FirstName"
+            android:errorEnabled="true"
             android:layout_weight="1"
-            android:layout_marginRight="15px"
-            android:background="@drawable/background_button"
-            android:padding="20px"
-            android:id="@+id/first_name"
-            />
-        <EditText
-            android:layout_width="wrap_content"
+            android:layout_margin="20px"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/first_name"
+                android:inputType="text"
+                android:background="#FFFFFF"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlined_last_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name"
+            android:hint="LastName"
+            android:errorEnabled="true"
             android:layout_weight="1"
-            android:layout_marginLeft="15px"
-            android:background="@drawable/background_button"
-            android:padding="20px"
-            android:id="@+id/last_name"
-            />
+            android:layout_margin="20px"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/last_name"
+                android:inputType="text"
+                android:background="#FFFFFF"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_registration_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_button"
+        android:hint="RegistrationNumber"
         android:layout_below="@+id/name_layout"
         android:layout_margin="20px"
-        android:padding="20px"
-        android:hint="Registration No"
-        android:id="@+id/registration_number"/>
-    <EditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/registration_number"
+            android:inputType="text"
+            android:background="#FFFFFF"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_school"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_button"
-        android:layout_below="@+id/registration_number"
+        android:hint="Mobile No"
+        android:layout_below="@+id/outlined_registration_number"
         android:layout_margin="20px"
-        android:padding="20px"
-        android:hint="School(Department)"
-        android:id="@+id/school"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/school"
+            android:inputType="text"
+            android:background="#ffffff"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -111,7 +149,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Mobile No"
-        android:layout_below="@+id/school"
+        android:layout_below="@+id/outlined_school"
         android:layout_margin="20px"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -120,7 +158,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/mobile_number"
             android:inputType="number"
-            android:background="@drawable/background_button"
+            android:background="#FFFFFF"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -138,7 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_id"
-            android:background="@drawable/background_button"
+            android:background="#FFFFFF"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>

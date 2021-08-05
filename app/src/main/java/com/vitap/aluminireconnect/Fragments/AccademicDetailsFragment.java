@@ -75,6 +75,7 @@ public class AccademicDetailsFragment extends Fragment {
                 UserDetails.put("School",School.getText().toString());
                 UserDetails.put("MobileNumber",MobileNumber.getText().toString());
                 UserDetails.put("EmailId",EmailId.getText().toString());
+
                 db.collection("Users")
                         .document("6SX37hFaW8cSS4Ut8b5DaRWzXr92")
                         .set(UserDetails)

@@ -57,33 +57,54 @@
         </Space>
 
     </LinearLayout>
-    <EditText
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_father_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_button"
+        android:hint="Father's Name"
         android:layout_below="@+id/personal_status_bar"
         android:layout_margin="20px"
-        android:padding="20px"
-        android:hint="Father's Name"
-        android:id="@+id/father_name"
-        android:inputType="text"/>
-    <EditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="#ffffff"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/father_name"
+            android:inputType="number"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_father_mobile_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_button"
-        android:layout_below="@+id/father_name"
-        android:layout_margin="20px"
-        android:padding="20px"
         android:hint="Father's Mobile Number"
-        android:id="@+id/father_mobile_number"
-        android:maxLength="12"
-        android:inputType="number"/>
+        android:layout_below="@+id/outlined_father_name"
+        android:layout_margin="20px"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="#ffffff"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/father_mobile_number"
+            android:inputType="number"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_mother_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Mother Name"
-        android:layout_below="@+id/father_mobile_number"
+        android:layout_below="@+id/outlined_father_mobile_number"
         android:layout_margin="20px"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:background="#ffffff"
@@ -135,6 +156,16 @@
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/outlined_permanent_address"
+        android:layout_margin="20px"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/personal_back"
+        android:text="BACK"
+        android:background="@drawable/background_button"/>
     <Button
         android:layout_width="300px"
         android:layout_height="wrap_content"
