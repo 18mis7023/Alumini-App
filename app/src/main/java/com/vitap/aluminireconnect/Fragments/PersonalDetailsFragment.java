@@ -29,7 +29,7 @@ public class PersonalDetailsFragment extends Fragment {
     private EditText FatherName;
     private EditText FatherMobileNumber;
     private TextInputEditText MotherName,MotherMobileNumber,PermanentAddress;
-    private Button PersonalNext;
+    private Button PersonalNext,PersonalBack;
     private FirebaseAuth mAuth;
     private final static String TAG = "PersonalDetails";
     private FirebaseFirestore db;
@@ -42,10 +42,17 @@ public class PersonalDetailsFragment extends Fragment {
         FatherName=view.findViewById(R.id.father_name);
         FatherMobileNumber=view.findViewById(R.id.father_mobile_number);
         PersonalNext=view.findViewById(R.id.personal_next);
+        PersonalBack=view.findViewById(R.id.personal_back);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
 
+        PersonalBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit();
+            }
+        });
         PersonalNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
