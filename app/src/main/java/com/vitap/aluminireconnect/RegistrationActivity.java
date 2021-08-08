@@ -2,14 +2,20 @@ package com.vitap.aluminireconnect;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.vitap.aluminireconnect.Fragments.AccademicDetailsFragment;
+import com.vitap.aluminireconnect.Fragments.RegistrationFragment;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -24,12 +30,27 @@ public class RegistrationActivity extends AppCompatActivity {
     private final static String TAG = "Registration ";
     private FirebaseFirestore db;
     private FirebaseUser user;
+    private ImageView background;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        background = findViewById(R.id.background_img);
+
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                background.setImageResource(R.drawable.light_reg_background);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                background.setImageResource(R.drawable.dark_reg_background);
+                break;
+        }
+
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -38,8 +59,8 @@ public class RegistrationActivity extends AppCompatActivity {
         Password = "Password";
 
         //Call this method when data is ready
-        CreateNewUser(AluminiEmail,Password);
-
+        //CreateNewUser(AluminiEmail,Password);
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new AccademicDetailsFragment()).commit();
     }
 
     private void SetUserData() {
