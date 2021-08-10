@@ -39,6 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         background = findViewById(R.id.background_img);
 
+       /*
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
@@ -50,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 background.setImageResource(R.drawable.dark_reg_background);
                 break;
         }
-
+        */
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -60,7 +61,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //Call this method when data is ready
         //CreateNewUser(AluminiEmail,Password);
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout,new AccademicDetailsFragment()).commit();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, new RegistrationFragment()).commit();
+        }else getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, new AccademicDetailsFragment()).commit();
     }
 
     private void SetUserData() {

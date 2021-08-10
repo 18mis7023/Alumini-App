@@ -1,15 +1,18 @@
 package com.vitap.aluminireconnect.Fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,7 +32,7 @@ public class AccademicDetailsFragment extends Fragment {
     private EditText FirstName;
     private EditText LastName;
     private EditText RegistrationNumber;
-    private EditText School;
+    private AutoCompleteTextView School;
     private TextInputEditText MobileNumber,EmailId;
     private Button AccademicNext;
     private FirebaseAuth mAuth;
@@ -38,10 +41,23 @@ public class AccademicDetailsFragment extends Fragment {
     private FirebaseUser user;
     DocumentReference ref;
 
+    public AccademicDetailsFragment(){
+
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_accademic_details, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Context context = new ContextThemeWrapper(getActivity(),R.style.AppTheme);
+        LayoutInflater local = inflater.cloneInContext(context);
+        View view = local.inflate(R.layout.fragment_accademic_details, container, false);
+
         FirstName = view.findViewById(R.id.first_name);
         LastName = view.findViewById(R.id.last_name);
         RegistrationNumber = view.findViewById(R.id.registration_number);
@@ -51,8 +67,6 @@ public class AccademicDetailsFragment extends Fragment {
         AccademicNext = view.findViewById(R.id.accademic_next);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-
-
 
         AccademicNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,12 +87,13 @@ public class AccademicDetailsFragment extends Fragment {
                 }else if(validateEmail(EmailId.getText().toString())){
                     EmailId.setError("Please Give the Valid Email Id");
                 }else{
+
                     Bundle bundle=new Bundle();
 //                bundle.putString("FirstName",FirstName.getText().toString());
 //                bundle.putString("LastName",LastName.getText().toString());
 //                bundle.putString("RegistrationNumber",RegistrationNumber.getText().toString());
 //                bundle.putString("School",School.getText().toString());
-                    PersonalDetailsFragment personalFragment=new PersonalDetailsFragment();
+                  PersonalDetailsFragment personalFragment=new PersonalDetailsFragment();
 //                personalFragment.setArguments(bundle);
 
                     HashMap UserDetails=new HashMap();
@@ -90,7 +105,7 @@ public class AccademicDetailsFragment extends Fragment {
                     UserDetails.put("EmailId",EmailId.getText().toString());
 
                     db.collection("Users")
-                            .document("6SX37hFaW8cSS4Ut8b5DaRWzXr92")
+                            .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .set(UserDetails)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

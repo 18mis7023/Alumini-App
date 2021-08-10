@@ -34,9 +34,7 @@ public class RegistrationFragment extends Fragment {
     public TextInputEditText Email, Passwd, ConformPasswd;
     public Button Create;
     private FirebaseAuth mAuth;
-    private final static String TAG = "Registration ";
     private FirebaseFirestore db;
-    private FirebaseUser user;
     private ProgressDialog progressDialog;
 
     public RegistrationFragment() {
@@ -68,13 +66,13 @@ public class RegistrationFragment extends Fragment {
             if (Email.getText().toString().trim().isEmpty() ||
                     Passwd.getText().toString().trim().isEmpty() ||
                     ConformPasswd.getText().toString().trim().isEmpty()) {
-                Toast.makeText(getContext(), "Enter valid data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Invalid details", Toast.LENGTH_SHORT).show();
             } else {
                 String email = Email.getText().toString().trim();
                 String password = Passwd.getText().toString().trim();
                 String conformPassword = ConformPasswd.getText().toString().trim();
                 if (password.length() <= 6) {
-                    Toast.makeText(getContext(), "password must  be more then 6 carecters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "password must  be more then 6 characters", Toast.LENGTH_SHORT).show();
                 } else if (password.equals(conformPassword)) {
                     if (isValidPassword(password)) {
                         CreateNewUser(email, password);
@@ -103,7 +101,6 @@ public class RegistrationFragment extends Fragment {
                 Toast.makeText(getContext(), "User created", Toast.LENGTH_SHORT).show();
                 Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
                 Toast.makeText(getContext(), "Please verify email", Toast.LENGTH_LONG).show();
-                assert getFragmentManager() != null;
                 getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit();
             } else {
                 progressDialog.dismiss();
