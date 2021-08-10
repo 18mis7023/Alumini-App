@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/light_background"
     tools:context=".Fragments.AccademicDetailsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,8 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Personal Details"
+        android:textColor="#ffffff"
         android:id="@+id/personal_details"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:textSize="21sp"/>
 
     <LinearLayout
@@ -20,12 +24,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/personal_details"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:id="@+id/personal_status_bar">
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:text="1"
+            android:textColor="#000000"
             android:background="@drawable/round_button"
             />
         <Space
@@ -34,9 +41,10 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:text="2"
+            android:textColor="#000000"
             android:background="@drawable/round_button"
             />
         <Space
@@ -45,16 +53,17 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:text="3"
+            android:textColor="#000000"
             android:background="@drawable/round_button"
             />
         <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="5" >
-        </Space>
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="5" >
+    </Space>
 
     </LinearLayout>
 
@@ -65,17 +74,19 @@
         android:layout_height="wrap_content"
         android:hint="Father's Name"
         android:layout_below="@+id/personal_status_bar"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:id="@+id/father_name"
             android:inputType="number"
-
+            android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,17 +96,20 @@
         android:layout_height="wrap_content"
         android:hint="Father's Mobile Number"
         android:layout_below="@+id/outlined_father_name"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:id="@+id/father_mobile_number"
             android:inputType="number"
-
+            android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,17 +119,20 @@
         android:layout_height="wrap_content"
         android:hint="Mother Name"
         android:layout_below="@+id/outlined_father_mobile_number"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mother_name"
+            android:padding="10dp"
             android:inputType="number"
-
+            android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,16 +142,20 @@
         android:layout_height="wrap_content"
         android:hint="Mother Mobile Number"
         android:layout_below="@+id/outlined_mother_name"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mother_mobile_number"
+            android:padding="10dp"
             android:inputType="textEmailAddress"
+            android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,16 +164,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Permanent Address"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_below="@+id/outlined_mother_mobile_number"
-        android:layout_margin="20px"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/permanent_address"
+            android:padding="10dp"
+            android:background="#ffffff"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -161,21 +185,25 @@
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_permanent_address"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_alignParentLeft="true"
         android:id="@+id/personal_back"
         android:text="BACK"
+        android:textColor="#000000"
         android:background="@drawable/background_button"/>
     <Button
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_permanent_address"
-        android:layout_margin="20px"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_alignParentRight="true"
         android:id="@+id/personal_next"
+        android:textColor="#000000"
         android:text="Next"
         android:background="@drawable/background_button"/>
-
-
 
 </RelativeLayout>
