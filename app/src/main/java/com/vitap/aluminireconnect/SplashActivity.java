@@ -19,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private FirebaseUser user;
     private SharedPreferences sharedPreferences;
 
@@ -28,50 +27,27 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        if (user == null) {
+            new Handler().postDelayed(() -> {
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }, 2000);
+        }else {
+            if (!sharedPreferences.getBoolean("AllDetailsAvailable",false)){
+                startActivity(new Intent(this,RegistrationActivity.class));
+            }else {
+                Toast.makeText(this, "User login done and all details available", Toast.LENGTH_LONG).show();
+                //send user to home activity
+            }
+        }
+
+
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        new Handler().postDelayed(() -> {
-            Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
-            startActivity(intent);
-            finish();
-        },2000);
-    }
-
-    private void isAllDetailsAvailable(){
-        FirebaseFirestore.getInstance().collection("Users")
-                .document(user.getUid())
-                .get()
-                .addOnCompleteListener(task -> {
-                    DocumentSnapshot snapshot = task.getResult();
-                    if (snapshot.exists()){
-                        //checking all fields are available
-                        try {
-                            String Name = snapshot.get("FirstName").toString();
-                            String FatherName = snapshot.get("FatherName").toString();
-                            String Placed = snapshot.get("Placed").toString();
-                            sharedPreferences.edit().putBoolean("AllDetailsAvailable",true).apply();
-                            //send user to Feed activity
-
-                        }catch (Exception e){
-                            Log.e("Details error : ",e.toString());
-                            Intent intent=new Intent(SplashActivity.this,RegistrationActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }else {
-                        Intent intent=new Intent(SplashActivity.this,RegistrationActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-    }
 
 
 }

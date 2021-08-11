@@ -6,8 +6,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -81,7 +86,20 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("Login ", "signInWithEmail:success");
                         Toast.makeText(LoginActivity.this, "LogIn success", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this,RegistrationActivity.class));
+                        PreferenceManager.getDefaultSharedPreferences(this)
+                                .edit().putBoolean("AllDetailsAvailable",false).commit();
+
+                        if (mAuth.getCurrentUser().isEmailVerified()){
+                            boolean isAvailable = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AllDetailsAvailable",false);
+                            if (!isAvailable){
+                                isAllDetailsAvailable();
+                            }else {
+                                //Send user to Feed Activity
+                            }
+                        }else {
+                            EmailVerification();
+                        }
+
                     } else {
                         Log.d("login", "signInWithEmail:failure", task.getException());
                         if (task.getException().toString().contains("no user")){
@@ -93,5 +111,50 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 });
     }
+    private void isAllDetailsAvailable(){
+        FirebaseFirestore.getInstance().collection("Users")
+                .document(mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(task -> {
+                    DocumentSnapshot snapshot = task.getResult();
+                    if (snapshot.exists()){
+                        //checking all fields are available
+                        try {
+                            String Name = snapshot.get("FirstName").toString();
+                            String FatherName = snapshot.get("FatherName").toString();
+                            String Placed = snapshot.get("Placed").toString();
+                            if (Name.isEmpty() || FatherName.isEmpty() || Placed.isEmpty()) {
+                                PreferenceManager.getDefaultSharedPreferences(this)
+                                        .edit().putBoolean("AllDetailsAvailable", true).apply();
+                            }
+                            //send user to Feed activity
 
+                        }catch (Exception e){
+                            Log.e("Details error : ",e.toString());
+                            Intent intent=new Intent(LoginActivity.this,RegistrationActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }else {
+                        Intent intent=new Intent(LoginActivity.this,RegistrationActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+    }
+
+    public void EmailVerification(){
+        new MaterialAlertDialogBuilder(this)
+                .setMessage("Please verify your email address and come back.")
+                .setTitle("Email not verified")
+                .setPositiveButton("Resend", (dialogInterface, i) -> {
+                    mAuth.getCurrentUser().sendEmailVerification();
+                    mAuth.signOut();
+                    dialogInterface.dismiss();
+                }).setNeutralButton("ok",(dialogInterface, i) -> {
+                dialogInterface.dismiss();
+                mAuth.signOut();
+                }).show();
+    }
 }

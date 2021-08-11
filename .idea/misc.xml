@@ -3,25 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/background_button.xml" value="0.2703125" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/round_button.xml" value="0.2703125" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_alumini.xml" value="0.1" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_home.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_registration.xml" value="0.17617753623188406" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_splash.xml" value="0.17617753623188406" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/dropdown_item.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/krish/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_registration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/background_input_button.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/round_button.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.21875" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.21875" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.21875" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/dark_background.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_background1_1.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_vector.xml" value="0.190625" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_vector_smart_object_1_1.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_alumini.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_login.xml" value="0.152" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_registration.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_splash.xml" value="0.1625" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_accademic_details.xml" value="0.264" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_additional_details.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_personal_details.xml" value="0.25" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_registration.xml" value="0.176" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

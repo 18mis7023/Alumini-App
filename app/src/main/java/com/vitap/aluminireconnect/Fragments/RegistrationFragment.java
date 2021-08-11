@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.vitap.aluminireconnect.LoginActivity;
 import com.vitap.aluminireconnect.R;
 import com.vitap.aluminireconnect.RegistrationActivity;
 import com.vitap.aluminireconnect.SplashActivity;
@@ -84,7 +85,6 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
-
         return view;
 
 
@@ -97,10 +97,10 @@ public class RegistrationFragment extends Fragment {
         mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 progressDialog.dismiss();
-                Toast.makeText(getContext(), "User created", Toast.LENGTH_SHORT).show();
                 Objects.requireNonNull(mAuth.getCurrentUser()).sendEmailVerification();
-                Toast.makeText(getContext(), "Please verify email", Toast.LENGTH_LONG).show();
-                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit();
+                Toast.makeText(getContext(), "Please verify email and Login", Toast.LENGTH_LONG).show();
+                mAuth.signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
             } else {
                 progressDialog.dismiss();
                 Log.e("Registration error : ", Objects.requireNonNull(task.getException()).toString());

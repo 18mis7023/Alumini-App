@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:id="@+id/background"
     android:layout_height="match_parent"
-    android:background="@drawable/light_background"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -49,7 +48,7 @@
             android:layout_width="match_parent"
             android:hint="Email"
             android:layout_marginTop="30dp"
-            android:layout_marginVertical="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginHorizontal="40dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_height="wrap_content">
