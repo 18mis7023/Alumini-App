@@ -84,7 +84,7 @@ public class AccademicDetailsFragment extends Fragment {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
                 FirstName.setBackgroundColor(Color.WHITE);
-                FirstName.setTextColor(Color.BLACK);
+                FirstName.setTextColor(getResources().getColor(R.color.black));
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
