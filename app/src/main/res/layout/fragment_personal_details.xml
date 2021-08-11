@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:id="@+id/father_name"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/mother_name"
             android:padding="10dp"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/mother_mobile_number"
             android:padding="10dp"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:background="#ffffff"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -177,7 +177,7 @@
             android:id="@+id/permanent_address"
             android:padding="10dp"
             android:background="#ffffff"
-            android:inputType="textEmailAddress"
+            android:inputType="textPostalAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

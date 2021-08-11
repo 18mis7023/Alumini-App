@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/light_background"
     tools:context=".Fragments.AccademicDetailsFragment">
+<!--    android:scrollbarAlwaysDrawHorizontalTrack="true"-->
+<!--    android:scrollY="@dimen/browser_actions_context_menu_max_width"-->
+<!--    >-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -134,14 +137,14 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registration_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/registration_number"
-            android:padding="11dp"
-            android:inputType="text"
             android:background="#FFFFFF"
+            android:inputType="text"
+            android:padding="11dp"
 
-            />
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -151,11 +154,12 @@
         android:hint="School(department)"
         android:layout_below="@+id/outlined_registration_number"
         android:layout_marginTop="40dp"
+        app:endIconMode="dropdown_menu"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-        <androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="11dp"

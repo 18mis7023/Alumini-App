@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,8 +27,7 @@ import java.util.HashMap;
 
 public class PersonalDetailsFragment extends Fragment {
 
-    private EditText FatherName;
-    private EditText FatherMobileNumber;
+    private TextInputEditText FatherName, FatherMobileNumber;
     private TextInputEditText MotherName,MotherMobileNumber,PermanentAddress;
     private Button PersonalNext,PersonalBack;
     private FirebaseAuth mAuth;
@@ -41,6 +41,9 @@ public class PersonalDetailsFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_personal_details, container, false);
         FatherName=view.findViewById(R.id.father_name);
         FatherMobileNumber=view.findViewById(R.id.father_mobile_number);
+        MotherName=view.findViewById(R.id.mother_name);
+        MotherMobileNumber=view.findViewById(R.id.mother_mobile_number);
+        PermanentAddress=view.findViewById(R.id.permanent_address);
         PersonalNext=view.findViewById(R.id.personal_next);
         PersonalBack=view.findViewById(R.id.personal_back);
         mAuth = FirebaseAuth.getInstance();
@@ -50,7 +53,7 @@ public class PersonalDetailsFragment extends Fragment {
         PersonalBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AdditionalDetailsFragment()).commit();
             }
         });
         PersonalNext.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +68,7 @@ public class PersonalDetailsFragment extends Fragment {
 
 
                 db.collection("Users")
-                        .document("6SX37hFaW8cSS4Ut8b5DaRWzXr92")
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .update(UserDetails)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -79,6 +82,7 @@ public class PersonalDetailsFragment extends Fragment {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.w(TAG, "Error writing document", e);
+                                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(getContext(), "Error : "+e, Toast.LENGTH_SHORT).show();
                             }
                         });
