@@ -61,7 +61,6 @@ public class RegistrationFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
-
         Create.setOnClickListener(v -> {
             if (Email.getText().toString().trim().isEmpty() ||
                     Passwd.getText().toString().trim().isEmpty() ||

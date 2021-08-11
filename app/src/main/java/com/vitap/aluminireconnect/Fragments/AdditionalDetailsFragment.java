@@ -1,6 +1,7 @@
 package com.vitap.aluminireconnect.Fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -55,6 +56,39 @@ public class AdditionalDetailsFragment extends Fragment {
         involvedInAnyStartup=view.findViewById(R.id.involved_in_any_startup);
         personalBack=view.findViewById(R.id.personal_back);
         additionalSubmit=view.findViewById(R.id.additional_submit);
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                placedOrNot.setBackgroundColor(getResources().getColor(R.color.white));
+                placedOrNot.setTextColor(getResources().getColor(R.color.black));
+                higherEducation.setBackgroundColor(getResources().getColor(R.color.white));
+                higherEducation.setTextColor(getResources().getColor(R.color.black));
+                attendedAnyCompetativeExam.setBackgroundColor(getResources().getColor(R.color.white));
+                attendedAnyCompetativeExam.setTextColor(getResources().getColor(R.color.black));
+                involvedInAnyStartup.setBackgroundColor(getResources().getColor(R.color.white));
+                involvedInAnyStartup.setTextColor(getResources().getColor(R.color.black));
+                feedbackOnCircullum.setBackgroundColor(getResources().getColor(R.color.white));
+                feedbackOnCircullum.setTextColor(getResources().getColor(R.color.black));
+                feedbackOnCampus.setBackgroundColor(getResources().getColor(R.color.white));
+                feedbackOnCampus.setTextColor(getResources().getColor(R.color.black));
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                placedOrNot.setBackgroundColor(getResources().getColor(R.color.black));
+                placedOrNot.setTextColor(getResources().getColor(R.color.white));
+                higherEducation.setBackgroundColor(getResources().getColor(R.color.black));
+                higherEducation.setTextColor(getResources().getColor(R.color.white));
+                attendedAnyCompetativeExam.setBackgroundColor(getResources().getColor(R.color.black));
+                attendedAnyCompetativeExam.setTextColor(getResources().getColor(R.color.white));
+                involvedInAnyStartup.setBackgroundColor(getResources().getColor(R.color.black));
+                involvedInAnyStartup.setTextColor(getResources().getColor(R.color.white));
+                feedbackOnCircullum.setBackgroundColor(getResources().getColor(R.color.black));
+                feedbackOnCircullum.setTextColor(getResources().getColor(R.color.white));
+                feedbackOnCampus.setBackgroundColor(getResources().getColor(R.color.black));
+                feedbackOnCampus.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
         String[] placedOrNotStr=new String[]{
                 "Item 1","Item 2",
                 "Item 1","Item 2",

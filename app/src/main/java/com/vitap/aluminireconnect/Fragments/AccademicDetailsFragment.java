@@ -83,20 +83,39 @@ public class AccademicDetailsFragment extends Fragment {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
-                FirstName.setBackgroundColor(Color.WHITE);
+                FirstName.setBackgroundColor(getResources().getColor(R.color.white));
                 FirstName.setTextColor(getResources().getColor(R.color.black));
+                LastName.setBackgroundColor(getResources().getColor(R.color.white));
+                LastName.setTextColor(getResources().getColor(R.color.black));
+                RegistrationNumber.setBackgroundColor(getResources().getColor(R.color.white));
+                RegistrationNumber.setTextColor(getResources().getColor(R.color.black));
+                School.setBackgroundColor(getResources().getColor(R.color.white));
+                School.setTextColor(getResources().getColor(R.color.black));
+                MobileNumber.setBackgroundColor(getResources().getColor(R.color.white));
+                MobileNumber.setTextColor(getResources().getColor(R.color.black));
+                EmailId.setBackgroundColor(getResources().getColor(R.color.white));
+                EmailId.setTextColor(getResources().getColor(R.color.black));
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
-                FirstName.setBackgroundColor(Color.BLACK);
-                FirstName.setTextColor(Color.WHITE);
-
+                FirstName.setBackgroundColor(getResources().getColor(R.color.black));
+                FirstName.setTextColor(getResources().getColor(R.color.white));
+                LastName.setBackgroundColor(getResources().getColor(R.color.black));
+                LastName.setTextColor(getResources().getColor(R.color.white));
+                RegistrationNumber.setBackgroundColor(getResources().getColor(R.color.black));
+                RegistrationNumber.setTextColor(getResources().getColor(R.color.white));
+                School.setBackgroundColor(getResources().getColor(R.color.black));
+                School.setTextColor(getResources().getColor(R.color.white));
+                MobileNumber.setBackgroundColor(getResources().getColor(R.color.black));
+                MobileNumber.setTextColor(getResources().getColor(R.color.white));
+                EmailId.setBackgroundColor(getResources().getColor(R.color.black));
+                EmailId.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
         String[] schoolItems=new String[]{
-                "Item 1","Item 2",
-                "Item 1","Item 2",
-                "Item 1","Others"
+                "SCOPE","SENSE",
+                "SMEC","VSB",
+                "VSL"
         };
         ArrayAdapter<String> schoolAdapter=new ArrayAdapter<>(
                 getContext(),R.layout.dropdown_item,schoolItems

@@ -77,13 +77,13 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            
             android:id="@+id/father_name"
             android:inputType="textPersonName"
             android:background="#ffffff"
@@ -99,14 +99,14 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
 
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            
             android:id="@+id/father_mobile_number"
             android:inputType="number"
             android:background="#ffffff"
@@ -122,7 +122,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
 
         >
 
@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mother_name"
-            android:padding="10dp"
+            
             android:inputType="textPersonName"
             android:background="#ffffff"
             />
@@ -145,7 +145,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
 
         >
 
@@ -153,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mother_mobile_number"
-            android:padding="10dp"
+            
             android:inputType="number"
             android:background="#ffffff"
             />
@@ -168,14 +168,14 @@
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:layout_below="@+id/outlined_mother_mobile_number"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/permanent_address"
-            android:padding="10dp"
+            
             android:background="#ffffff"
             android:inputType="textPostalAddress"
             />

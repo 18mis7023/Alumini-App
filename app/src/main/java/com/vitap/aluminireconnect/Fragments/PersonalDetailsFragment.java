@@ -1,5 +1,6 @@
 package com.vitap.aluminireconnect.Fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -48,7 +49,35 @@ public class PersonalDetailsFragment extends Fragment {
         PersonalBack=view.findViewById(R.id.personal_back);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                FatherName.setBackgroundColor(getResources().getColor(R.color.white));
+                FatherName.setTextColor(getResources().getColor(R.color.black));
+                FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.white));
+                FatherMobileNumber.setTextColor(getResources().getColor(R.color.black));
+                MotherName.setBackgroundColor(getResources().getColor(R.color.white));
+                MotherName.setTextColor(getResources().getColor(R.color.black));
+                MotherMobileNumber.setBackgroundColor(getResources().getColor(R.color.white));
+                MotherMobileNumber.setTextColor(getResources().getColor(R.color.black));
+                PermanentAddress.setBackgroundColor(getResources().getColor(R.color.white));
+                PermanentAddress.setTextColor(getResources().getColor(R.color.black));
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                FatherName.setBackgroundColor(getResources().getColor(R.color.black));
+                FatherName.setTextColor(getResources().getColor(R.color.white));
+                FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.black));
+                FatherMobileNumber.setTextColor(getResources().getColor(R.color.white));
+                MotherName.setBackgroundColor(getResources().getColor(R.color.black));
+                MotherName.setTextColor(getResources().getColor(R.color.white));
+                MotherMobileNumber.setBackgroundColor(getResources().getColor(R.color.black));
+                MotherMobileNumber.setTextColor(getResources().getColor(R.color.white));
+                PermanentAddress.setBackgroundColor(getResources().getColor(R.color.black));
+                PermanentAddress.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
 
         PersonalBack.setOnClickListener(new View.OnClickListener() {
             @Override
