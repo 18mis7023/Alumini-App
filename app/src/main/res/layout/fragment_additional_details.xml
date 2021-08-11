@@ -28,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:id="@+id/personal_status_bar">
+        android:id="@+id/additional_status_bar">
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -65,22 +65,57 @@
 
     </LinearLayout>
 
-    <Spinner
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_placed_or_not"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/personal_status_bar"
-        android:layout_margin="20px"
-        android:id="@+id/placed_or_not"
-        android:spinnerMode="dropdown"/>
+        android:hint="Placed / Not Placed"
+        android:layout_below="@+id/additional_status_bar"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/placed_or_not"
+            android:padding="11dp"
+            android:background="#FFFFFF"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_higher_education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Planning for Higher Education"
+        android:layout_below="@+id/outlined_placed_or_not"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/higher_education"
+            android:padding="11dp"
+            android:background="#FFFFFF"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_feedback_on_circullum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Feedback on circulum"
-        android:layout_below="@+id/placed_or_not"
-        android:layout_marginTop="40dp"
+        android:layout_below="@+id/outlined_higher_education"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -102,7 +137,7 @@
         android:layout_height="wrap_content"
         android:hint="Feedback on Campus"
         android:layout_below="@+id/outlined_feedback_on_circullum"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -118,39 +153,13 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-    <Button
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_feedback_on_campus"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_alignParentLeft="true"
-        android:id="@+id/personal_back"
-        android:text="BACK"
-        android:background="@drawable/background_button"/>
-    <Button
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_feedback_on_campus"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/additional_submit"
-        android:text="SUBMIT"
-        android:background="@drawable/background_button"/>
-
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_test"
+        android:id="@+id/outlined_attended_any_competative_exam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dropdown"
-        android:layout_below="@+id/additional_submit"
-        android:layout_marginTop="40dp"
+        android:hint="Attended any competitive exam"
+        android:layout_below="@+id/outlined_feedback_on_campus"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         app:endIconMode="dropdown_menu"
@@ -159,12 +168,59 @@
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/test"
+            android:id="@+id/attended_any_competative_exam"
             android:padding="11dp"
             android:background="#FFFFFF"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_involved_in_any_startup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="involved in any startup"
+        android:layout_below="@+id/outlined_attended_any_competative_exam"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/involved_in_any_startup"
+            android:padding="11dp"
+            android:background="#FFFFFF"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/personal_back"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/outlined_involved_in_any_startup"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/background_button"
+        android:text="BACK" />
+    <Button
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/outlined_involved_in_any_startup"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/additional_submit"
+        android:text="SUBMIT"
+        android:background="@drawable/background_button"/>
+
+
+
 
 
 
