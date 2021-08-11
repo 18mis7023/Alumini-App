@@ -101,7 +101,6 @@
                 android:inputType="text"
                 android:padding="11dp"
                 android:background="#FFFFFF"
-
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -2,13 +2,19 @@ package com.vitap.aluminireconnect;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,6 +31,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ConstraintLayout background = findViewById(R.id.background);
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                background.setBackgroundResource(R.drawable.light_background);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                background.setBackgroundResource(R.drawable.dark_background);
+                break;
+        }
+
+        MaterialCardView BackCard = findViewById(R.id.back_card);
         Email = findViewById(R.id.email);
         Passwd = findViewById(R.id.passwd);
         Login = findViewById(R.id.log_in);
@@ -35,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        BackCard.setOnClickListener(view -> LoginActivity.super.onBackPressed());
         Login.setOnClickListener(v -> {
             if (Email.getText().toString().isEmpty() || Passwd.getText().toString().isEmpty()){
                 Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();

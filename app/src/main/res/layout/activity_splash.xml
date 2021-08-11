@@ -7,9 +7,18 @@
     tools:context=".SplashActivity">
     <ImageView
         android:layout_width="400px"
+        android:id="@+id/logo"
         android:layout_height="400px"
         android:layout_centerInParent="true"
         android:src="@drawable/vitaplogo"
         />
+
+    <ProgressBar
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ProgressBar>
 
 </RelativeLayout>
