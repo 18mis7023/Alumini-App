@@ -2,6 +2,8 @@ package com.vitap.aluminireconnect.Fragments;
 
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -77,6 +79,20 @@ public class AccademicDetailsFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
 
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                FirstName.setBackgroundColor(Color.WHITE);
+                FirstName.setTextColor(Color.BLACK);
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                FirstName.setBackgroundColor(Color.BLACK);
+                FirstName.setTextColor(Color.WHITE);
+
+                break;
+        }
         String[] schoolItems=new String[]{
                 "Item 1","Item 2",
                 "Item 1","Item 2",

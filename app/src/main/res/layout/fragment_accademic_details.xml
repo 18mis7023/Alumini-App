@@ -96,12 +96,13 @@
             android:hint="FirstName"
             android:layout_weight="1"
             android:layout_marginRight="20px"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/first_name"
+                android:padding="11dp"
                 android:inputType="text"
                 android:background="#FFFFFF"
                 />
@@ -114,7 +115,7 @@
             android:hint="LastName"
             android:layout_weight="1"
             android:layout_marginLeft="20px"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

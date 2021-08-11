@@ -37,38 +37,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (user == null){
-            new Handler().postDelayed(() -> {
-                Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            },2000);
-        }else {
-                if (user.isEmailVerified())
-                {
-                    boolean allDetails =  sharedPreferences.getBoolean("AllDetailsAvailable",false);
-                    if (allDetails){
-                        Toast.makeText(SplashActivity.this, "all details full", Toast.LENGTH_SHORT).show();
-                    }else isAllDetailsAvailable();
-                }else {
-                    new MaterialAlertDialogBuilder(SplashActivity.this)
-                            .setMessage("Please verify your email address and come back.")
-                            .setTitle("Email not verified")
-                            .setPositiveButton("Resend", (dialogInterface, i) -> {
-                                user.sendEmailVerification();
-                                dialogInterface.dismiss();
-                            }).setNegativeButton("Sign out", (dialogInterface, i) -> {
-                        mAuth.signOut();
-                        dialogInterface.dismiss();
-                        finish();
-                    }).setNeutralButton("ok",(dialogInterface, i) -> {
-                        dialogInterface.dismiss();
-                        finish();
-                    })
-                            .show();
-                }
-            }
-
+        new Handler().postDelayed(() -> {
+            Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        },2000);
     }
 
     private void isAllDetailsAvailable(){
