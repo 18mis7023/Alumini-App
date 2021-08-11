@@ -7,15 +7,18 @@
     android:orientation="vertical"
     android:background="@drawable/light_background"
     tools:context=".Fragments.AccademicDetailsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Additional Details"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:id="@+id/personal_details"
-        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:textSize="21sp"/>
@@ -25,14 +28,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/personal_details"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:id="@+id/additional_status_bar">
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/aluminium"
             android:background="@drawable/round_button"
             />
         <Space
@@ -41,9 +47,12 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="2"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:background="@drawable/round_button"
             />
         <Space
@@ -52,9 +61,12 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="3"
+            android:textStyle="bold"
+            app:backgroundTint="@color/aluminium"
+            android:textColor="@color/black"
             android:background="@drawable/round_button"
             />
         <Space
@@ -64,26 +76,24 @@
         </Space>
 
     </LinearLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_placed_or_not"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Placed / Not Placed"
         android:layout_below="@+id/additional_status_bar"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         app:endIconMode="dropdown_menu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/placed_or_not"
-            android:padding="11dp"
-            android:background="#FFFFFF"
+            
+            android:background="@color/white"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,18 +103,18 @@
         android:layout_height="wrap_content"
         android:hint="Planning for Higher Education"
         android:layout_below="@+id/outlined_placed_or_not"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         app:endIconMode="dropdown_menu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/higher_education"
-            android:padding="11dp"
-            android:background="#FFFFFF"
+            
+            android:background="@color/white"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -115,10 +125,10 @@
         android:layout_height="wrap_content"
         android:hint="Feedback on circulum"
         android:layout_below="@+id/outlined_higher_education"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -126,8 +136,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/feedback_on_circullum"
             android:inputType="text"
-            android:padding="10dp"
-            android:background="#ffffff"
+            
+            android:background="@color/white"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,10 +147,10 @@
         android:layout_height="wrap_content"
         android:hint="Feedback on Campus"
         android:layout_below="@+id/outlined_feedback_on_circullum"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -148,8 +158,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/feedback_on_campus"
             android:inputType="text"
-            android:padding="10dp"
-            android:background="#ffffff"
+            android:background="@color/white"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,18 +168,17 @@
         android:layout_height="wrap_content"
         android:hint="Attended any competitive exam"
         android:layout_below="@+id/outlined_feedback_on_campus"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         app:endIconMode="dropdown_menu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/attended_any_competative_exam"
-            android:padding="11dp"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -180,18 +188,17 @@
         android:layout_height="wrap_content"
         android:hint="involved in any startup"
         android:layout_below="@+id/outlined_attended_any_competative_exam"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         app:endIconMode="dropdown_menu"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/involved_in_any_startup"
-            android:padding="11dp"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -202,26 +209,27 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_involved_in_any_startup"
         android:layout_alignParentLeft="true"
+        android:textStyle="bold"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/background_button"
+        app:backgroundTint="@color/aluminium"
         android:text="BACK" />
     <Button
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_involved_in_any_startup"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentRight="true"
         android:id="@+id/additional_submit"
+        app:backgroundTint="@color/white"
         android:text="SUBMIT"
+        android:textStyle="bold"
         android:background="@drawable/background_button"/>
-
-
-
-
-
-
+    </ScrollView>
 </RelativeLayout>

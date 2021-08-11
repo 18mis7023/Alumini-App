@@ -17,17 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
-
-
-    <!-- TODO: Update blank fragment layout -->
+        <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Academic Details "
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:id="@+id/accademic_details"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:textSize="21sp"/>
@@ -37,7 +35,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/accademic_details"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:id="@+id/accademic_status_bar">
@@ -45,7 +43,9 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text="1"
-            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
             android:background="@drawable/round_button"
             />
         <Space
@@ -56,8 +56,10 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:text="2"
+            android:textStyle="bold"
+            app:backgroundTint="@color/aluminium"
             android:background="@drawable/round_button"
             />
         <Space
@@ -68,8 +70,10 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/aluminium"
             android:text="3"
+            android:textStyle="bold"
             android:background="@drawable/round_button"
             />
         <Space
@@ -85,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/accademic_status_bar"
         android:weightSum="2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:id="@+id/name_layout">
@@ -97,13 +101,12 @@
             android:layout_weight="1"
             android:layout_marginRight="20px"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/first_name"
                 android:inputType="text"
-                android:background="#FFFFFF"
+                android:background="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,16 +117,14 @@
             android:hint="LastName"
             android:layout_weight="1"
             android:layout_marginLeft="20px"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/last_name"
                 android:inputType="text"
-                android:padding="11dp"
-                android:background="#FFFFFF"
-
+                android:background="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -133,19 +134,17 @@
         android:layout_height="wrap_content"
         android:hint="RegistrationNumber"
         android:layout_below="@+id/name_layout"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registration_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:inputType="text"
-            android:padding="11dp"
-
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,19 +154,18 @@
         android:layout_height="wrap_content"
         android:hint="School(department)"
         android:layout_below="@+id/outlined_registration_number"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:endIconMode="dropdown_menu"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="11dp"
             android:id="@+id/school"
             android:inputType="text"
-            android:background="#ffffff" />
+            android:background="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -177,18 +175,17 @@
         android:layout_height="wrap_content"
         android:hint="Mobile No"
         android:layout_below="@+id/outlined_school"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="11dp"
             android:id="@+id/mobile_number"
             android:inputType="number"
-            android:background="#FFFFFF"
+            android:background="@color/white"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -199,17 +196,16 @@
         android:layout_height="wrap_content"
         android:hint="Email Id"
         android:layout_below="@+id/outlined_mobile_number"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_id"
-            android:padding="11dp"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -219,15 +215,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_email_id"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:backgroundTint="@color/white"
         android:background="@drawable/background_button"
         android:text="Next"
         android:id="@+id/accademic_next"/>
-
-
     </RelativeLayout>
 </ScrollView>
 </FrameLayout>

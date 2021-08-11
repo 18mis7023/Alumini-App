@@ -36,9 +36,9 @@
             android:id="@+id/txtlogin"
             android:textStyle="bold"
             android:clickable="true"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:layout_marginStart="40dp"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_gravity="start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -55,7 +55,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/email"
-                android:background="#ffffff"
+                android:background="@color/white"
                 android:inputType="textEmailAddress"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
@@ -72,20 +72,21 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/passwd"
-                android:background="#ffffff"
+                android:background="@color/white"
                 android:inputType="textPassword"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:text="Log in"
+            android:text="Log In"
             android:id="@+id/log_in"
-            android:textColor="#000000"
+            android:textColor="@color/white"
             android:layout_margin="40dp"
-            app:backgroundTint="#BFBFBF"
+            android:textStyle="bold"
+            app:backgroundTint="@color/aluminium"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
         </Button>
 
         <TextView
@@ -93,7 +94,8 @@
             android:text="Forgot Password ?"
             android:id="@+id/forgot_passwd_text"
             android:clickable="true"
-            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -103,7 +105,8 @@
             android:text="Don’t have an account ? Register Here"
             android:id="@+id/register_text"
             android:clickable="true"
-            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
