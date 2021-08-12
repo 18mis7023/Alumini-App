@@ -59,7 +59,9 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         MaterialCardView BackCard = findViewById(R.id.back_card);
-        BackCard.setOnClickListener(view -> LoginActivity.super.onBackPressed());
+        BackCard.setOnClickListener(view -> {
+                finishAffinity();
+                });
         Login.setOnClickListener(v -> {
             if (Email.getText().toString().isEmpty() || Passwd.getText().toString().isEmpty()){
                 Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
@@ -87,13 +89,13 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "LogIn success", Toast.LENGTH_SHORT).show();
                         PreferenceManager.getDefaultSharedPreferences(this)
                                 .edit().putBoolean("AllDetailsAvailable",false).commit();
-
                         if (mAuth.getCurrentUser().isEmailVerified()){
                             boolean isAvailable = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AllDetailsAvailable",false);
                             if (!isAvailable){
                                 isAllDetailsAvailable();
-                            }else {
+                            }else{
                                 //Send user to Feed Activity
+                                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                             }
                         }else {
                             EmailVerification();
@@ -115,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                 .document(mAuth.getCurrentUser().getUid())
                 .get()
                 .addOnCompleteListener(task -> {
+                    progressDialog.dismiss();
                     DocumentSnapshot snapshot = task.getResult();
                     if (snapshot.exists()){
                         //checking all fields are available
@@ -125,8 +128,8 @@ public class LoginActivity extends AppCompatActivity {
                             if (Name.isEmpty() || FatherName.isEmpty() || Placed.isEmpty()) {
                                 PreferenceManager.getDefaultSharedPreferences(this)
                                         .edit().putBoolean("AllDetailsAvailable", true).apply();
+                                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                             }
-                            //send user to Feed activity
 
                         }catch (Exception e){
                             Log.e("Details error : ",e.toString());
