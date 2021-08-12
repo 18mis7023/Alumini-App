@@ -3,18 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/dark_background.xml" value="0.22291666666666668" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_login.xml" value="0.1203125" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_registration.xml" value="0.1203125" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.14945652173913043" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.176" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.2" />
-        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_registration.xml" value="0.1203125" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/background_input_button.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/dark_background.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/round_button.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_login.xml" value="0.1203125" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_registration.xml" value="0.536" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.21875" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_registration.xml" value="0.1203125" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/dark_background.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_background1_1.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />

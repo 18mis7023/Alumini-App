@@ -62,7 +62,6 @@ public class PersonalDetailsFragment extends Fragment {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
-                personalRelativeLayout.setBackground(getResources().getDrawable(R.drawable.light_background));
                 FatherName.setBackgroundColor(getResources().getColor(R.color.white));
                 FatherName.setTextColor(getResources().getColor(R.color.black));
                 FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.white));
@@ -76,7 +75,6 @@ public class PersonalDetailsFragment extends Fragment {
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
-                personalRelativeLayout.setBackground(getResources().getDrawable(R.drawable.dark_background));
                 FatherName.setBackgroundColor(getResources().getColor(R.color.black));
                 FatherName.setTextColor(getResources().getColor(R.color.white));
                 FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.black));

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,7 @@ public class RegistrationFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private ProgressDialog progressDialog;
+    private TextView loginTxtInRegister;
 
     public RegistrationFragment() {
         // Required empty public constructor
@@ -59,17 +61,25 @@ public class RegistrationFragment extends Fragment {
         Passwd = view.findViewById(R.id.password);
         ConformPasswd = view.findViewById(R.id.conform_password);
         Create = view.findViewById(R.id.sign_up);
+        loginTxtInRegister=view.findViewById(R.id.login_txt_in_register);
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
 
-        MaterialCardView BackCard = view.findViewById(R.id.back_card);
-        BackCard.setOnClickListener(view1 -> {
-            startActivity(new Intent(getContext(),LoginActivity.class));
-            getActivity().finish();
-        });
+//        MaterialCardView BackCard = view.findViewById(R.id.back_card);
+//        BackCard.setOnClickListener(view1 -> {
+//            startActivity(new Intent(getContext(),LoginActivity.class));
+//            getActivity().finish();
+//        });
 
+        loginTxtInRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(),LoginActivity.class));
+                getActivity().finish();
+            }
+        });
         Create.setOnClickListener(v -> {
             if (Email.getText().toString().trim().isEmpty() ||
                     Passwd.getText().toString().trim().isEmpty() ||

@@ -7,5 +7,6 @@
     <color name="black">#000000</color>
     <color name="aluminium">#8F8F8F</color>
     <color name="gray">#e6e6e6</color>
+    <color name="blackopacity">#33000000</color>
 
 </resources>

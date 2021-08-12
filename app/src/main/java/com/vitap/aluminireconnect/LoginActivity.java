@@ -36,19 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ConstraintLayout background = findViewById(R.id.background);
-        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                //light mode
-                background.setBackgroundResource(R.drawable.light_background);
-                break;
-            case Configuration.UI_MODE_NIGHT_YES:
-                //Dark mode
-                background.setBackgroundResource(R.drawable.dark_background);
-                break;
-        }
-
         Email = findViewById(R.id.email);
         Passwd = findViewById(R.id.passwd);
         Login = findViewById(R.id.log_in);
@@ -58,6 +45,27 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
 
         mAuth = FirebaseAuth.getInstance();
+        ConstraintLayout background = findViewById(R.id.background);
+        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                //light mode
+                background.setBackgroundResource(R.drawable.light_background);
+                Email.setBackgroundColor(getResources().getColor(R.color.white));
+                Email.setTextColor(getResources().getColor(R.color.black));
+                Passwd.setBackgroundColor(getResources().getColor(R.color.white));
+                Passwd.setTextColor(getResources().getColor(R.color.black));
+                break;
+            case Configuration.UI_MODE_NIGHT_YES:
+                //Dark mode
+                Email.setBackgroundColor(getResources().getColor(R.color.black));
+                Email.setTextColor(getResources().getColor(R.color.white));
+                Passwd.setBackgroundColor(getResources().getColor(R.color.black));
+                Passwd.setTextColor(getResources().getColor(R.color.white));
+                background.setBackgroundResource(R.drawable.dark_background);
+                break;
+        }
+
         MaterialCardView BackCard = findViewById(R.id.back_card);
         BackCard.setOnClickListener(view -> {
                 finishAffinity();
@@ -96,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                             }else{
                                 //Send user to Feed Activity
                                 startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                                finish();
                             }
                         }else {
                             EmailVerification();

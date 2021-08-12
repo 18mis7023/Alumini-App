@@ -68,8 +68,8 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:textColor="#000000"
             android:text="3"
 
@@ -108,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/first_name"
                 android:inputType="text"
+                android:textColorHighlight ="#ff0000"
                 android:background="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -187,7 +188,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="11dp"
             android:id="@+id/mobile_number"
             android:inputType="number"
             android:background="#FFFFFF"
