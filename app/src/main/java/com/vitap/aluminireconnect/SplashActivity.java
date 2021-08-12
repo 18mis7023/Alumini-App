@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         if (user == null) {
             new Handler().postDelayed(() -> {
                 if(user==null){
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, AluminiActivity.class);
                     startActivity(intent);
                     finish();
                 }
