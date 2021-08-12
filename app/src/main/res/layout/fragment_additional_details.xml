@@ -101,12 +101,35 @@
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+<!-- Placed or not when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_placed_or_not_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_placed_or_not"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/placed_or_not_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_higher_education"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Planning for Higher Education"
-        android:layout_below="@+id/outlined_placed_or_not"
+        android:layout_below="@+id/outlined_placed_or_not_if_yes"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
@@ -123,13 +146,36 @@
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+<!-- Higher Education when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_higher_education_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_higher_education"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/higher_education_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_feedback_on_circullum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Feedback on circulum"
-        android:layout_below="@+id/outlined_higher_education"
+        android:layout_below="@+id/outlined_higher_education_if_yes"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
@@ -189,12 +235,35 @@
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+<!-- Competative Exam when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_attended_any_competative_exam_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_attended_any_competative_exam"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/attended_any_competative_exam_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_involved_in_any_startup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="involved in any startup"
-        android:layout_below="@+id/outlined_attended_any_competative_exam"
+        android:layout_below="@+id/outlined_attended_any_competative_exam_if_yes"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
@@ -212,12 +281,35 @@
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
+<!-- StartUp when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_involved_in_any_startup_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_involved_in_any_startup"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/involved_in_any_startup_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/personal_back"
         android:layout_width="300px"
         android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_involved_in_any_startup"
+        android:layout_below="@id/outlined_involved_in_any_startup_if_yes"
         android:layout_alignParentLeft="true"
         android:textStyle="bold"
         android:windowSoftInputMode="stateVisible|adjustResize"
@@ -233,7 +325,7 @@
         android:id="@+id/additional_submit"
         android:layout_width="300px"
         android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_involved_in_any_startup"
+        android:layout_below="@id/outlined_involved_in_any_startup_if_yes"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
