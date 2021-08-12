@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_centerInParent="true"
+    android:id="@+id/additional_relative_fragment"
     tools:context=".Fragments.AccademicDetailsFragment">
     <ScrollView
         android:layout_width="match_parent"
@@ -35,12 +36,12 @@
         android:layout_marginLeft="40dp"
         android:id="@+id/additional_status_bar">
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="1"
             android:textStyle="bold"
             android:textColor="@color/black"
-            app:backgroundTint="@color/aluminium"
+            app:backgroundTint="@color/white"
             android:background="@drawable/round_button"
             />
         <Space
@@ -49,8 +50,8 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="2"
             android:textStyle="bold"
             app:backgroundTint="@color/white"
@@ -63,11 +64,11 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="3"
             android:textStyle="bold"
-            app:backgroundTint="@color/aluminium"
+            app:backgroundTint="@color/white"
             android:textColor="@color/black"
             android:background="@drawable/round_button"
             />
@@ -94,7 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/placed_or_not"
-            
+            android:focusableInTouchMode="true"
+            android:focusable="false"
             android:background="@color/white"
             android:inputType="textEmailAddress"
             />
@@ -115,7 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/higher_education"
-            
+            android:focusableInTouchMode="true"
+            android:focusable="false"
             android:background="@color/white"
             android:inputType="textEmailAddress"
             />
@@ -180,6 +183,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/attended_any_competative_exam"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
             android:background="@color/white"
             android:inputType="textEmailAddress"
             />
@@ -200,6 +205,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/involved_in_any_startup"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
+
             android:background="@color/white"
             android:inputType="textEmailAddress"
             />
@@ -212,6 +220,7 @@
         android:layout_below="@id/outlined_involved_in_any_startup"
         android:layout_alignParentLeft="true"
         android:textStyle="bold"
+        android:windowSoftInputMode="stateVisible|adjustResize"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
@@ -219,21 +228,25 @@
         android:background="@drawable/background_button"
         app:backgroundTint="@color/aluminium"
         android:text="BACK" />
+
     <Button
+        android:id="@+id/additional_submit"
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_involved_in_any_startup"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
         android:layout_marginBottom="10dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/additional_submit"
-        app:backgroundTint="@color/white"
         android:text="SUBMIT"
         android:textStyle="bold"
-        android:background="@drawable/background_button"/>
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        />
 
         </RelativeLayout>
     </ScrollView>
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white" />
 </RelativeLayout>

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -96,30 +97,22 @@ public class AdditionalDetailsFragment extends Fragment {
                 break;
         }
         String[] placedOrNotStr=new String[]{
-                "Item 1","Item 2",
-                "Item 1","Item 2",
-                "Item 1","Others"
+                "Yes","No"
         };
         ArrayAdapter<String> placedOrNotAdapter=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,placedOrNotStr);
         placedOrNot.setAdapter(placedOrNotAdapter);
         String[] higherEducationStr=new String[]{
-                "Item 1","Item 2",
-                "Item 1","Item 2",
-                "Item 1","Others"
+                "Yes","No"
         };
         ArrayAdapter<String> higherEducationAdapter=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,higherEducationStr);
         higherEducation.setAdapter(higherEducationAdapter);
         String[] attendedAnyCompetativeExamStr=new String[]{
-                "Item 1","Item 2",
-                "Item 1","Item 2",
-                "Item 1","Others"
+                "Yes","No"
         };
         ArrayAdapter<String> attendedAnyCompetativeExamAdapter=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,attendedAnyCompetativeExamStr);
         attendedAnyCompetativeExam.setAdapter(attendedAnyCompetativeExamAdapter);
         String[] involvedInAnyStartupStr=new String[]{
-                "Item 1","Item 2",
-                "Item 1","Item 2",
-                "Item 1","Others"
+                "Yes","No"
         };
         ArrayAdapter<String> involvedInAnyStartupAdapter=new ArrayAdapter<>(getContext(),R.layout.dropdown_item,involvedInAnyStartupStr);
         involvedInAnyStartup.setAdapter(involvedInAnyStartupAdapter);

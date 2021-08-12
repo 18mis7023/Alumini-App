@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/accademics_frame_fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.AccademicDetailsFragment">
 <!--    android:scrollbarAlwaysDrawHorizontalTrack="true"-->
@@ -39,8 +40,8 @@
         android:layout_marginLeft="40dp"
         android:id="@+id/accademic_status_bar">
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="1"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -53,8 +54,8 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:textColor="@color/black"
             android:text="2"
             android:textStyle="bold"
@@ -67,12 +68,13 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/aluminium"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textColor="#000000"
             android:text="3"
+
             android:textStyle="bold"
+            app:backgroundTint="@color/aluminium"
             android:background="@drawable/round_button"
             />
         <Space
@@ -100,6 +102,7 @@
             android:layout_weight="1"
             android:layout_marginRight="20px"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,6 +166,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/school"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
             android:inputType="text"
             android:background="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -182,9 +187,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="11dp"
             android:id="@+id/mobile_number"
             android:inputType="number"
-            android:background="@color/white"
+            android:background="#FFFFFF"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -198,7 +204,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

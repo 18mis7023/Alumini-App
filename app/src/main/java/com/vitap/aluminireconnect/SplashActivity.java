@@ -32,15 +32,19 @@ public class SplashActivity extends AppCompatActivity {
 
         if (user == null) {
             new Handler().postDelayed(() -> {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if(user==null){
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }, 2000);
         }else {
             if (!sharedPreferences.getBoolean("AllDetailsAvailable",false)){
                 startActivity(new Intent(this,RegistrationActivity.class));
             }else {
                 Toast.makeText(this, "User login done and all details available", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(intent);
                 //send user to home activity
             }
         }

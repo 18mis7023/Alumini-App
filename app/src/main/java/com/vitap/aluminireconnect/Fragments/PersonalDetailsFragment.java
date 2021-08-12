@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class PersonalDetailsFragment extends Fragment {
     private FirebaseFirestore db;
     private ProgressDialog progressDialog;
 
+    private FirebaseUser user;
+    private RelativeLayout personalRelativeLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class PersonalDetailsFragment extends Fragment {
         PermanentAddress=view.findViewById(R.id.permanent_address);
         PersonalNext=view.findViewById(R.id.personal_next);
         PersonalBack=view.findViewById(R.id.personal_back);
+        personalRelativeLayout=view.findViewById(R.id.personal_relative_layout);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
@@ -58,6 +62,7 @@ public class PersonalDetailsFragment extends Fragment {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
+                personalRelativeLayout.setBackground(getResources().getDrawable(R.drawable.light_background));
                 FatherName.setBackgroundColor(getResources().getColor(R.color.white));
                 FatherName.setTextColor(getResources().getColor(R.color.black));
                 FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.white));
@@ -71,6 +76,7 @@ public class PersonalDetailsFragment extends Fragment {
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
+                personalRelativeLayout.setBackground(getResources().getDrawable(R.drawable.dark_background));
                 FatherName.setBackgroundColor(getResources().getColor(R.color.black));
                 FatherName.setTextColor(getResources().getColor(R.color.white));
                 FatherMobileNumber.setBackgroundColor(getResources().getColor(R.color.black));
