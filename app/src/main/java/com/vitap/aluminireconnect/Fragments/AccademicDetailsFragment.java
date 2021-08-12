@@ -1,6 +1,7 @@
 package com.vitap.aluminireconnect.Fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -46,6 +47,7 @@ public class AccademicDetailsFragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseUser user;
     DocumentReference ref;
+    private ProgressDialog progressDialog;
 
 //    ArrayList<String> arraylistSchool;
 //    ArrayAdapter<String> arrayAdapterSchool;
@@ -78,6 +80,7 @@ public class AccademicDetailsFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        progressDialog = new ProgressDialog(getContext());
 
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
@@ -148,7 +151,8 @@ public class AccademicDetailsFragment extends Fragment {
                 }else if(TextUtils.isEmpty(MobileNumber.getText().toString())){
                     MobileNumber.setError("Please Fill the Mobile Number");
                 }else{
-
+                    progressDialog.show();
+                    progressDialog.setMessage("Loading...");
                     Bundle bundle=new Bundle();
 //                bundle.putString("FirstName",FirstName.getText().toString());
 //                bundle.putString("LastName",LastName.getText().toString());
@@ -172,6 +176,7 @@ public class AccademicDetailsFragment extends Fragment {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d(TAG, "DocumentSnapshot successfully written!");
+                                    progressDialog.dismiss();
                                     getFragmentManager().beginTransaction().replace(R.id.frame_layout,personalFragment).commit();
 //                                Toast.makeText(getContext(), "UserData Updated", Toast.LENGTH_SHORT).show();
                                 }
@@ -180,6 +185,7 @@ public class AccademicDetailsFragment extends Fragment {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.w(TAG, "Error writing document", e);
+                                    progressDialog.dismiss();
 //                                Toast.makeText(getContext(), "Error : "+e, Toast.LENGTH_SHORT).show();
                                 }
                             });

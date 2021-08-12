@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/light_background"
     tools:context=".Fragments.AccademicDetailsFragment">
 <!--    android:scrollbarAlwaysDrawHorizontalTrack="true"-->
 <!--    android:scrollY="@dimen/browser_actions_context_menu_max_width"-->

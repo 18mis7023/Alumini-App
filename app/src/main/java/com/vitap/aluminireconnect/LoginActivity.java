@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
 
-        MaterialCardView BackCard = findViewById(R.id.back_card);
         Email = findViewById(R.id.email);
         Passwd = findViewById(R.id.passwd);
         Login = findViewById(R.id.log_in);
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
 
         mAuth = FirebaseAuth.getInstance();
-
+        MaterialCardView BackCard = findViewById(R.id.back_card);
         BackCard.setOnClickListener(view -> LoginActivity.super.onBackPressed());
         Login.setOnClickListener(v -> {
             if (Email.getText().toString().isEmpty() || Passwd.getText().toString().isEmpty()){
@@ -122,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             String Name = snapshot.get("FirstName").toString();
                             String FatherName = snapshot.get("FatherName").toString();
-                            String Placed = snapshot.get("Placed").toString();
+                            String Placed = snapshot.get("PlacedOrNot").toString();
                             if (Name.isEmpty() || FatherName.isEmpty() || Placed.isEmpty()) {
                                 PreferenceManager.getDefaultSharedPreferences(this)
                                         .edit().putBoolean("AllDetailsAvailable", true).apply();

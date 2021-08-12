@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +63,13 @@ public class RegistrationFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
+
+        MaterialCardView BackCard = view.findViewById(R.id.back_card);
+        BackCard.setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(),LoginActivity.class));
+            getActivity().finish();
+        });
+
         Create.setOnClickListener(v -> {
             if (Email.getText().toString().trim().isEmpty() ||
                     Passwd.getText().toString().trim().isEmpty() ||

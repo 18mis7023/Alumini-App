@@ -1,5 +1,6 @@
 package com.vitap.aluminireconnect.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,8 +42,8 @@ public class AdditionalDetailsFragment extends Fragment {
     private FirebaseAuth mAuth;
     private final static String TAG = " Additional Details";
     private FirebaseFirestore db;
-    private FirebaseUser user;
-    DocumentReference ref;
+    private ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +58,10 @@ public class AdditionalDetailsFragment extends Fragment {
         involvedInAnyStartup=view.findViewById(R.id.involved_in_any_startup);
         personalBack=view.findViewById(R.id.personal_back);
         additionalSubmit=view.findViewById(R.id.additional_submit);
+        progressDialog = new ProgressDialog(getContext());
+        feedbackOnCampus = view.findViewById(R.id.feedback_on_campus);
+        feedbackOnCircullum = view.findViewById(R.id.feedback_on_circullum);
+
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
@@ -148,6 +154,8 @@ public class AdditionalDetailsFragment extends Fragment {
 //                    PersonalDetailsFragment personalFragment=new PersonalDetailsFragment();
 ////                personalFragment.setArguments(bundle);
 //
+                progressDialog.show();
+                progressDialog.setMessage("Loading...");
                     HashMap AdditionalDetails=new HashMap();
                     AdditionalDetails.put("PlacedOrNot",placedOrNot.getText().toString());
                     AdditionalDetails.put("HigherEducation",higherEducation.getText().toString());
@@ -156,13 +164,15 @@ public class AdditionalDetailsFragment extends Fragment {
                     AdditionalDetails.put("FeedbackOnCurriculum",feedbackOnCircullum.getText().toString());
                     AdditionalDetails.put("FeedbackOnCampus",feedbackOnCampus.getText().toString());
 //
-                    db.collection("Users")
+                    FirebaseFirestore.getInstance().collection("Users")
                             .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .update(AdditionalDetails)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d(TAG, "DocumentSnapshot successfully written!");
+                                    PreferenceManager.getDefaultSharedPreferences(getContext())
+                                            .edit().putBoolean("AllDetailsAvailable", true).apply();
                                     Intent intent=new Intent(getActivity(), HomeActivity.class);
                                     startActivity(intent);
 //                                Toast.makeText(getContext(), "UserData Updated", Toast.LENGTH_SHORT).show();

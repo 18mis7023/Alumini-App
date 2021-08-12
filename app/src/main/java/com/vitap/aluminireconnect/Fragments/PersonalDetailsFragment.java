@@ -1,11 +1,13 @@
 package com.vitap.aluminireconnect.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +36,8 @@ public class PersonalDetailsFragment extends Fragment {
     private FirebaseAuth mAuth;
     private final static String TAG = "PersonalDetails";
     private FirebaseFirestore db;
-    private FirebaseUser user;
+    private ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class PersonalDetailsFragment extends Fragment {
         PersonalBack=view.findViewById(R.id.personal_back);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        progressDialog = new ProgressDialog(getContext());
+
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
@@ -79,22 +84,30 @@ public class PersonalDetailsFragment extends Fragment {
                 break;
         }
 
-        PersonalBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AdditionalDetailsFragment()).commit();
-            }
-        });
-        PersonalNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        PersonalBack.setOnClickListener(view12 ->
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AdditionalDetailsFragment()).commit()
+        );
+        PersonalNext.setOnClickListener(view1 -> {
+
+            if(TextUtils.isEmpty(FatherName.getText().toString())){
+                FatherName.setError("Please Fill the First Name");
+            }else if(TextUtils.isEmpty(FatherMobileNumber.getText().toString())){
+                FatherMobileNumber.setError("Please Fill the Last Name");
+            }else if(TextUtils.isEmpty(MotherMobileNumber.getText().toString())){
+                MotherMobileNumber.setError("Please Fill the Registration Number");
+            }else if(TextUtils.isEmpty(MotherName.getText().toString())){
+                MotherName.setError("Please Fill the School");
+            }else if(TextUtils.isEmpty(PermanentAddress.getText().toString())){
+                PermanentAddress.setError("Please Fill the Mobile Number");
+            }else{
+                progressDialog.show();
+                progressDialog.setMessage("Loading...");
                 HashMap UserDetails=new HashMap();
                 UserDetails.put("FatherName",FatherName.getText().toString());
                 UserDetails.put("FathersMobileNumber",FatherMobileNumber.getText().toString());
                 UserDetails.put("MotherName",MotherName.getText().toString());
                 UserDetails.put("MothersMobileNumber",MotherMobileNumber.getText().toString());
                 UserDetails.put("PermanentAddress",PermanentAddress.getText().toString());
-
 
                 db.collection("Users")
                         .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -103,6 +116,7 @@ public class PersonalDetailsFragment extends Fragment {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d(TAG, "DocumentSnapshot successfully written!");
+                                progressDialog.dismiss();
                                 getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AdditionalDetailsFragment()).commit();
 //                                Toast.makeText(getContext(), "UserData Updated", Toast.LENGTH_SHORT).show();
                             }
@@ -110,14 +124,14 @@ public class PersonalDetailsFragment extends Fragment {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
                                 Log.w(TAG, "Error writing document", e);
                                 Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(getContext(), "Error : "+e, Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
             }
+
         });
         return view;
     }
