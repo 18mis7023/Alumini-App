@@ -225,7 +225,6 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
-                android:background="@drawable/background_button"
                 android:text="Next"
                 android:textColor="@color/black"
                 android:textStyle="bold"

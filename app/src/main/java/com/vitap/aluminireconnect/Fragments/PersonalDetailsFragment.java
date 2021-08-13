@@ -89,20 +89,20 @@ public class PersonalDetailsFragment extends Fragment {
         }
 
         PersonalBack.setOnClickListener(view12 ->
-                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AdditionalDetailsFragment()).commit()
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit()
         );
         PersonalNext.setOnClickListener(view1 -> {
 
             if(TextUtils.isEmpty(FatherName.getText().toString())){
-                FatherName.setError("Please Fill the First Name");
+                FatherName.setError("Please Fill the father name");
             }else if(TextUtils.isEmpty(FatherMobileNumber.getText().toString())){
-                FatherMobileNumber.setError("Please Fill the Last Name");
+                FatherMobileNumber.setError("Please Fill the father number");
             }else if(TextUtils.isEmpty(MotherMobileNumber.getText().toString())){
-                MotherMobileNumber.setError("Please Fill the Registration Number");
+                MotherMobileNumber.setError("Please Fill the mother number");
             }else if(TextUtils.isEmpty(MotherName.getText().toString())){
-                MotherName.setError("Please Fill the School");
+                MotherName.setError("Please Fill the mother name");
             }else if(TextUtils.isEmpty(PermanentAddress.getText().toString())){
-                PermanentAddress.setError("Please Fill the Mobile Number");
+                PermanentAddress.setError("Please Fill the permanent address");
             }else{
                 progressDialog.show();
                 progressDialog.setMessage("Loading...");

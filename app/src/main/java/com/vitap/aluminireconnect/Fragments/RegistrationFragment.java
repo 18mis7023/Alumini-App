@@ -67,19 +67,11 @@ public class RegistrationFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
 
-//        MaterialCardView BackCard = view.findViewById(R.id.back_card);
-//        BackCard.setOnClickListener(view1 -> {
-//            startActivity(new Intent(getContext(),LoginActivity.class));
-//            getActivity().finish();
-//        });
-
-        loginTxtInRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(),LoginActivity.class));
-                getActivity().finish();
-            }
+        loginTxtInRegister.setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(),LoginActivity.class));
+            getActivity().finish();
         });
+
         Create.setOnClickListener(v -> {
             if (Email.getText().toString().trim().isEmpty() ||
                     Passwd.getText().toString().trim().isEmpty() ||
