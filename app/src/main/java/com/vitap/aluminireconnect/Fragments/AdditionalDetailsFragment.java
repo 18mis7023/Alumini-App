@@ -39,7 +39,10 @@ public class AdditionalDetailsFragment extends Fragment {
     private AutoCompleteTextView placedOrNot,higherEducation,attendedAnyCompetativeExam,involvedInAnyStartup;
     private TextInputEditText placedOrNotIfYes,higherEducationIfYes,attendedAnyCompetativeExamIfYes,involvedInAnyStartupIfYes;
     private TextInputEditText feedbackOnCircullum,feedbackOnCampus;
+    private Button additionalBack,additionalSubmit;
+    private FirebaseAuth mAuth;
     private final static String TAG = " Additional Details";
+    private FirebaseFirestore db;
     private ProgressDialog progressDialog;
 
     @Override
@@ -59,8 +62,8 @@ public class AdditionalDetailsFragment extends Fragment {
         higherEducationIfYes=view.findViewById(R.id.higher_education_if_yes);
         attendedAnyCompetativeExamIfYes=view.findViewById(R.id.attended_any_competative_exam_if_yes);
         involvedInAnyStartupIfYes=view.findViewById(R.id.involved_in_any_startup_if_yes);
-        Button personalBack = view.findViewById(R.id.personal_back);
-        Button additionalSubmit = view.findViewById(R.id.additional_submit);
+        additionalBack=view.findViewById(R.id.additional_back);
+        additionalSubmit=view.findViewById(R.id.additional_submit);
         progressDialog = new ProgressDialog(getContext());
         feedbackOnCampus = view.findViewById(R.id.feedback_on_campus);
         feedbackOnCircullum = view.findViewById(R.id.feedback_on_circullum);
@@ -163,8 +166,7 @@ public class AdditionalDetailsFragment extends Fragment {
             Toast.makeText(getActivity(), involvedInAnyStartup.getText().toString(), Toast.LENGTH_SHORT).show();
         });
 
-
-        personalBack.setOnClickListener(view12 ->
+        additionalBack.setOnClickListener(view12 ->
                 getFragmentManager().beginTransaction().replace(R.id.frame_layout,new PersonalDetailsFragment()).commit()
         );
 
@@ -180,6 +182,22 @@ public class AdditionalDetailsFragment extends Fragment {
                 AdditionalDetails.put("Startup", involvedInAnyStartup.getText().toString());
                 AdditionalDetails.put("FeedbackOnCurriculum", feedbackOnCircullum.getText().toString());
                 AdditionalDetails.put("FeedbackOnCampus", feedbackOnCampus.getText().toString());
+                if(placedOrNot.getText().toString().equals("Yes"))
+                {
+                    AdditionalDetails.put("WherePlaced",placedOrNotIfYes.getText().toString());
+                }
+                if(higherEducation.getText().toString().equals("Yes"))
+                {
+                    AdditionalDetails.put("WhereHigherEducation",higherEducationIfYes.getText().toString());
+                }
+                if(attendedAnyCompetativeExam.getText().toString().equals("Yes"))
+                {
+                    AdditionalDetails.put("WhereCompetativeExam",attendedAnyCompetativeExamIfYes.getText().toString());
+                }
+                if(involvedInAnyStartup.getText().toString().equals("Yes"))
+                {
+                    AdditionalDetails.put("WhereStartup",involvedInAnyStartupIfYes.getText().toString());
+                }
 
                 FirebaseFirestore.getInstance().collection("Users")
                         .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -196,7 +214,16 @@ public class AdditionalDetailsFragment extends Fragment {
                         Toast.makeText(getContext(), "Error : "+e, Toast.LENGTH_SHORT).show();
                         });
 
+
+//
+
+//                }
+//                End of else
+
+
+
             }
+//            End of onClick Method
         });
         return view;
     }

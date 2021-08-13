@@ -306,7 +306,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/personal_back"
+        android:id="@+id/additional_back"
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:layout_below="@id/outlined_involved_in_any_startup_if_yes"
