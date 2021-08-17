@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/background_button.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/background_input_button.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/dark_background.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/ic_lightloginpattern.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/ic_pattern.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/ic_vector.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/lightmode_background.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/drawable/round_button.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_alumini.xml" value="0.2546875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.21875" />

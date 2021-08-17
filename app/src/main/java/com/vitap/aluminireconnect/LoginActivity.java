@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
-                background.setBackgroundResource(R.drawable.light_background);
+                background.setBackgroundResource(R.drawable.lightnormalpattern);
                 Email.setBackgroundColor(getResources().getColor(R.color.white));
                 Email.setTextColor(getResources().getColor(R.color.black));
                 Passwd.setBackgroundColor(getResources().getColor(R.color.white));

@@ -20,7 +20,7 @@ public class AluminiActivity extends AppCompatActivity {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
-                background.setBackgroundResource(R.drawable.lightmode_pattern);
+//                background.setBackgroundResource(R.drawable.lightmode_pattern);
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
