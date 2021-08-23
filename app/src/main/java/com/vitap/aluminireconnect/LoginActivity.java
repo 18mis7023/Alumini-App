@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                 Email.setTextColor(getResources().getColor(R.color.black));
                 Passwd.setBackgroundColor(getResources().getColor(R.color.white));
                 Passwd.setTextColor(getResources().getColor(R.color.black));
+                ForgotPasswd.setTextColor(getResources().getColor(R.color.black));
+                Register.setTextColor(getResources().getColor(R.color.black));
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode
@@ -63,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                 Passwd.setBackgroundColor(getResources().getColor(R.color.black));
                 Passwd.setTextColor(getResources().getColor(R.color.white));
                 background.setBackgroundResource(R.drawable.dark_background);
+                ForgotPasswd.setTextColor(getResources().getColor(R.color.white));
+                Register.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
 
@@ -83,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         );
         ForgotPasswd.setOnClickListener(v -> {
             //Send to forgot password activity
+            
         });
 
 
@@ -96,7 +101,9 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("Login ", "signInWithEmail:success");
                         Toast.makeText(LoginActivity.this, "LogIn success", Toast.LENGTH_SHORT).show();
                         PreferenceManager.getDefaultSharedPreferences(this)
-                                .edit().putBoolean("AllDetailsAvailable",false).commit();
+                                .edit()
+                                .putBoolean("AllDetailsAvailable",false)
+                                .apply();
                         if (mAuth.getCurrentUser().isEmailVerified()){
                             boolean isAvailable = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("AllDetailsAvailable",false);
                             if (!isAvailable){
@@ -108,9 +115,11 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }else {
                             EmailVerification();
+                            progressDialog.dismiss();
                         }
 
                     } else {
+                        progressDialog.dismiss();
                         Log.d("login", "signInWithEmail:failure", task.getException());
                         if (task.getException().toString().contains("no user")){
                             Toast.makeText(LoginActivity.this, "Account not found please sign-up", Toast.LENGTH_SHORT).show();
@@ -118,10 +127,11 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
                         }else Toast.makeText(LoginActivity.this, "Authentication failed."+task.getException(),Toast.LENGTH_SHORT).show();
                     }
-                    progressDialog.dismiss();
+
                 });
     }
     private void isAllDetailsAvailable(){
+        progressDialog.setMessage("Getting data...");
         FirebaseFirestore.getInstance().collection("Users")
                 .document(mAuth.getCurrentUser().getUid())
                 .get()
@@ -134,11 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                             String Name = snapshot.get("FirstName").toString();
                             String FatherName = snapshot.get("FatherName").toString();
                             String Placed = snapshot.get("PlacedOrNot").toString();
-                            if (Name.isEmpty() || FatherName.isEmpty() || Placed.isEmpty()) {
-                                PreferenceManager.getDefaultSharedPreferences(this)
-                                        .edit().putBoolean("AllDetailsAvailable", true).apply();
-                                startActivity(new Intent(LoginActivity.this,HomeActivity.class));
-                            }
+
+                            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                            finish();
 
                         }catch (Exception e){
                             Log.e("Details error : ",e.toString());
@@ -151,6 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
+                    progressDialog.dismiss();
                 });
 
     }
