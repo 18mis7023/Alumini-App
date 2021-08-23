@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
-                background.setBackgroundResource(R.drawable.light_background);
+                background.setBackgroundResource(R.drawable.lightnormalpattern);
                 break;
             case Configuration.UI_MODE_NIGHT_YES:
                 //Dark mode

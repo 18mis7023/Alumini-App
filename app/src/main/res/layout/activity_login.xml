@@ -85,14 +85,14 @@
             android:textColor="@color/white"
             android:layout_margin="40dp"
             android:textStyle="bold"
-            app:backgroundTint="@color/aluminium"
+            app:backgroundTint="@color/brown"
             android:layout_width="match_parent"
             android:layout_height="60dp">
         </Button>
 
         <TextView
             android:layout_marginTop="30dp"
-            android:text="Forgot Password ?"
+            android:text="@string/forgot_password"
             android:id="@+id/forgot_passwd_text"
             android:clickable="true"
             android:textStyle="bold"
@@ -103,7 +103,7 @@
 
         <TextView
             android:layout_marginTop="20dp"
-            android:text="Don’t have an account ? Register Here"
+            android:text="@string/don_t_have_an_account_register_here"
             android:id="@+id/register_text"
             android:clickable="true"
             android:textStyle="bold"

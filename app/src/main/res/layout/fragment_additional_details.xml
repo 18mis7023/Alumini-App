@@ -330,9 +330,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/brown"
                 android:text="SUBMIT"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
         </RelativeLayout>

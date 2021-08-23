@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#00000000"
     android:layout_height="match_parent"
+    android:background="@drawable/lightnormalpattern"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.RegistrationFragment">
 
@@ -93,8 +93,8 @@
           android:layout_gravity="end"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textColor="@color/black"
-          android:backgroundTint="@color/white">
+          android:textColor="@color/white"
+          android:backgroundTint="@color/brown">
       </Button>
 
       <TextView

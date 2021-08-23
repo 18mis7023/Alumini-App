@@ -17,6 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/accademic_details"
                 android:layout_width="match_parent"
@@ -226,9 +227,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="Next"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                app:backgroundTint="@color/white" />
+                app:backgroundTint="@color/brown" />
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>
