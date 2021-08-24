@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Additional Details"
-        android:textColor="@color/white"
         android:id="@+id/personal_details"
         android:textStyle="bold"
         android:layout_marginTop="20dp"

@@ -50,8 +50,9 @@ public class IntroActivity extends AppCompatActivity {
         CurrentPage = 0;
 
         Next.setOnClickListener(view -> SlideViewPager.setCurrentItem(CurrentPage+1));
-        Skip.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this,AluminiActivity.class)));
-        EndImage.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this,AluminiActivity.class)));
+        Skip.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this,LoginActivity.class)));
+        EndImage.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this,LoginActivity.class)));
+        
     }
 
     public void AddDotsIndicator(int position){

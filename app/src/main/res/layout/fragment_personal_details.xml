@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:text="Personal Details"
         android:textStyle="bold"
-        android:textColor="@color/white"
         android:id="@+id/personal_details"
         android:layout_marginTop="20dp"
         android:layout_marginRight="40dp"

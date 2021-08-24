@@ -26,7 +26,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="Academic Details "
-                android:textColor="@color/white"
                 android:textSize="21sp"
                 android:textStyle="bold" />
 

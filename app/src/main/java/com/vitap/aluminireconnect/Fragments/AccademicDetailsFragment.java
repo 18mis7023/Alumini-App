@@ -203,7 +203,7 @@ public class AccademicDetailsFragment extends Fragment {
     }
 
 //    To Validate Email Id whether the id is valid or not
-    private boolean validateEmail(String email) {
+    public boolean validateEmail(String email) {
         return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
                 + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."

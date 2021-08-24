@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class SplashActivity extends AppCompatActivity {
 
     private FirebaseUser user;
-    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (user == null) {
             new Handler().postDelayed(() -> {
@@ -41,10 +40,12 @@ public class SplashActivity extends AppCompatActivity {
         }else {
             if (!sharedPreferences.getBoolean("AllDetailsAvailable",false)){
                 startActivity(new Intent(this,RegistrationActivity.class));
+                finish();
             }else {
                 Toast.makeText(this, "User login done and all details available", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
                 //send user to home activity
             }
         }

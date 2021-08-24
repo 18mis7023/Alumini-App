@@ -20,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        // startActivity(new Intent(this,RegistrationActivity.class));
+
+        Toast.makeText(this, "Home screen", Toast.LENGTH_SHORT).show();
     }
 }

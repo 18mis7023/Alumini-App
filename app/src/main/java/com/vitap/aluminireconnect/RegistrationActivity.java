@@ -23,20 +23,6 @@ public class RegistrationActivity extends AppCompatActivity {
         backCard=findViewById(R.id.back_card);
         txtRegisterHere=findViewById(R.id.txt_register_here);
 
-        RelativeLayout background = findViewById(R.id.background);
-        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                //light mode
-                background.setBackgroundResource(R.drawable.lightnormalpattern);
-                txtRegisterHere.setTextColor(getResources().getColor(R.color.black));
-                break;
-            case Configuration.UI_MODE_NIGHT_YES:
-                //Dark mode
-                txtRegisterHere.setTextColor(getResources().getColor(R.color.white));
-                background.setBackgroundResource(R.drawable.dark_background);
-                break;
-        }
 
         backCard.setOnClickListener(view -> RegistrationActivity.super.onBackPressed());
         
