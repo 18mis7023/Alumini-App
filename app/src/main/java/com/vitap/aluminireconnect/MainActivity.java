@@ -11,6 +11,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.vitap.aluminireconnect.Fragments.DiscussionFeedFragment;
+import com.vitap.aluminireconnect.Fragments.RegistrationFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,9 +20,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-       // startActivity(new Intent(this,RegistrationActivity.class));
-
-        Toast.makeText(this, "Home screen", Toast.LENGTH_SHORT).show();
     }
 }
