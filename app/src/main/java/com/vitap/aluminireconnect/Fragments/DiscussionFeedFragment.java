@@ -366,7 +366,10 @@ public class DiscussionFeedFragment extends Fragment {
                     holder.Decs.setSingleLine(false);
                 }
 
-                FirebaseFirestore.getInstance().collection("Users").document(UserId).get()
+                FirebaseFirestore.getInstance()
+                        .collection("Users")
+                        .document(UserId)
+                        .get()
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
@@ -410,11 +413,9 @@ public class DiscussionFeedFragment extends Fragment {
                 });
 
                 */
-
-
+                
                 holder.setLikesButtonStatus(PostId);
                 holder.getCommentsCount(PostId);
-
 
                 holder.Like.setOnClickListener(v -> {
                     IsLiked = true;

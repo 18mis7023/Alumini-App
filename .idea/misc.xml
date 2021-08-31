@@ -16,7 +16,9 @@
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_accademic_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_additional_details.xml" value="0.21875" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/fragment_personal_details.xml" value="0.21875" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/bottom_bar_background.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/dark_background.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_back_icon.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_background1_1.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.26614583333333336" />
@@ -31,7 +33,7 @@
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_alumini.xml" value="0.176" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_forgot_password.xml" value="0.176" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_forgot_possword.xml" value="0.25" />
-        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_home.xml" value="0.13229166666666667" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_intro.xml" value="0.136" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_login.xml" value="0.12" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -46,6 +48,7 @@
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_registration.xml" value="0.176" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/image_dialog.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/slide_layout.xml" value="0.152" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/menu/bottom_bar_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

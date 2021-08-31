@@ -41,7 +41,6 @@ public class NewPostActivity extends AppCompatActivity {
     private ProgressDialog PD;
     private FirebaseFirestore db;
     private DocumentReference PostKey;
-    private String UserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,6 @@ public class NewPostActivity extends AppCompatActivity {
         Desc_ET = findViewById(R.id.desc_et);
         MaterialCardView post_bt = findViewById(R.id.post_bt);
         db = FirebaseFirestore.getInstance();
-        UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         upload_img.setOnClickListener(v -> ImagePicker());
         PostImage.setOnClickListener(v -> ImagePicker());
@@ -104,7 +102,6 @@ public class NewPostActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     PD.dismiss();
                     startActivity(new Intent(NewPostActivity.this,MainActivity.class));
-
                 })
                 .addOnFailureListener(e -> {
                     PD.dismiss();
