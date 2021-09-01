@@ -27,10 +27,12 @@
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_heart.xml" value="0.1578125" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_rectangle.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_slide_back.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_unsaved.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_vector.xml" value="0.190625" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/ic_vector_smart_object_1_1.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/drawable/round_button.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_alumini.xml" value="0.176" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_comments.xml" value="0.146875" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_forgot_password.xml" value="0.176" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_forgot_possword.xml" value="0.25" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_home.xml" value="0.2" />
@@ -40,11 +42,13 @@
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_new_post.xml" value="0.2359375" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_registration.xml" value="0.12" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/activity_splash.xml" value="0.1625" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/comments_list_view.xml" value="0.146875" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/feed_recycler_items.xml" value="0.3775" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_accademic_details.xml" value="0.264" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_additional_details.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_discussion_feed.xml" value="0.1" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_discussion_feed.xml" value="0.264" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_personal_details.xml" value="0.12" />
+        <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/fragment_registration.xml" value="0.176" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/image_dialog.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/saigo/Documents/android projects/alumin/app/src/main/res/layout/slide_layout.xml" value="0.152" />
@@ -52,7 +56,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
+import com.vitap.aluminireconnect.CommentsActivity;
 import com.vitap.aluminireconnect.NewPostActivity;
 import com.vitap.aluminireconnect.PrettytimeFromat;
 import com.vitap.aluminireconnect.R;
@@ -64,7 +66,7 @@ public class DiscussionFeedFragment extends Fragment {
     private RecyclerView EventsRecycler;
     private FirebaseFirestore fireStore;
     private Context context;
-    private MaterialCardView Discussions,Memories,Internship;
+    private MaterialCardView EventsCard,NewsFeedCard;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
@@ -86,11 +88,12 @@ public class DiscussionFeedFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
         EventsRecycler = view.findViewById(R.id.feed_recyclerView);
-        Discussions = view.findViewById(R.id.discussions_card);
-        Memories = view.findViewById(R.id.memories_card);
-        Internship = view.findViewById(R.id.internship_card);
+        EventsCard = view.findViewById(R.id.events_card);
+        NewsFeedCard = view.findViewById(R.id.news_feed_card);
 
-        Discussions.setOnClickListener(new View.OnClickListener() {
+
+        /*
+        EventsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Query query = fireStore.collection("Posts")
@@ -130,6 +133,8 @@ public class DiscussionFeedFragment extends Fragment {
                 Pagging(query,config);
             }
         });
+
+         */
 
         Query query = fireStore.collection("Posts")
                 .orderBy("Time", Query.Direction.DESCENDING);
@@ -210,6 +215,7 @@ public class DiscussionFeedFragment extends Fragment {
         android.widget.ImageView ImageView, ClubImg;
         ImageButton Like, Comment;
         CardView PostCard;
+        LinearLayout LikesLayout;
 
         public FeedViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -224,6 +230,7 @@ public class DiscussionFeedFragment extends Fragment {
             likesCount = itemView.findViewById(R.id.like_counter);
             CommentsCount = itemView.findViewById(R.id.comment_counter);
             PostCard = itemView.findViewById(R.id.post_card);
+            LikesLayout = itemView.findViewById(R.id.likes_layout);
 
         }
 
@@ -273,13 +280,10 @@ public class DiscussionFeedFragment extends Fragment {
 
 
     public void openCommentsActivity(String PostId, String Desc) {
-      /*  Intent intent = new Intent(context, Comments.class);
+       Intent intent = new Intent(context, CommentsActivity.class);
         intent.putExtra("PostId", PostId);
         intent.putExtra("Desc", Desc);
         startActivity(intent);
-
-       */
-        Toast.makeText(getContext(), "Comments activity", Toast.LENGTH_SHORT).show();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -418,37 +422,41 @@ public class DiscussionFeedFragment extends Fragment {
                 holder.getCommentsCount(PostId);
 
                 holder.Like.setOnClickListener(v -> {
-                    IsLiked = true;
-                    Toast.makeText(getContext(), "Like", Toast.LENGTH_SHORT).show();
-                    likesRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            if (IsLiked) {
-                                if (snapshot.child(PostId).hasChild(user.getUid())) {
-                                    likesRef.child(PostId).child(user.getUid()).removeValue();
-                                    holder.Like.setImageResource(R.drawable.ic_heart);
-                                } else {
-                                    likesRef.child(PostId).child(user.getUid()).setValue(new Date().toString());
-                                    holder.Like.setImageResource(R.drawable.ic_filled_heart);
-
-                                }
-                                IsLiked = false;
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                        }
-                    });
+                  LikeClick(model.getPostId(), holder.Like);
                 });
-
+                holder.LikesLayout.setOnClickListener(view ->
+                        LikeClick(model.getPostId(), holder.Like)
+                );
 
             }
 
         };
 
         adapter.notifyDataSetChanged();
+    }
+
+    public void LikeClick(String PostId,ImageButton LikeButton){
+        IsLiked = true;
+        likesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (IsLiked) {
+                    if (snapshot.child(PostId).hasChild(user.getUid())) {
+                        likesRef.child(PostId).child(user.getUid()).removeValue();
+                        LikeButton.setImageResource(R.drawable.ic_heart);
+                    } else {
+                        likesRef.child(PostId).child(user.getUid()).setValue(new Date().toString());
+                        LikeButton.setImageResource(R.drawable.ic_filled_heart);
+                    }
+                    IsLiked = false;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
