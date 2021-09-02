@@ -101,7 +101,7 @@ public class NewPostActivity extends AppCompatActivity {
         PostKey.set(Post)
                 .addOnSuccessListener(aVoid -> {
                     PD.dismiss();
-                    startActivity(new Intent(NewPostActivity.this,MainActivity.class));
+                    startActivity(new Intent(NewPostActivity.this,HomeActivity.class));
                 })
                 .addOnFailureListener(e -> {
                     PD.dismiss();
