@@ -217,11 +217,34 @@
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlined_date_of_birth"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outlined_email_id"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:hint="Date Of Birth">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/date_of_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:inputType="textEmailAddress"
+                    android:focusable="false"
+                    android:focusableInTouchMode="true"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
             <Button
                 android:id="@+id/accademic_next"
                 android:layout_width="300px"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/outlined_email_id"
+                android:layout_below="@id/outlined_date_of_birth"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"

@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +31,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.vitap.aluminireconnect.R;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -38,7 +45,8 @@ public class AccademicDetailsFragment extends Fragment {
     private EditText FirstName;
     private EditText LastName;
     private EditText RegistrationNumber;
-    private TextInputLayout OutlinedSchool;
+    private TextInputLayout OutlinedSchool,OutlinedDate;
+    private EditText DateOfBirth;
     private AutoCompleteTextView School;
     private TextInputEditText MobileNumber,EmailId;
     private Button AccademicNext;
@@ -73,7 +81,9 @@ public class AccademicDetailsFragment extends Fragment {
         LastName = view.findViewById(R.id.last_name);
         RegistrationNumber = view.findViewById(R.id.registration_number);
         OutlinedSchool=(TextInputLayout) view.findViewById(R.id.outlined_school);
+        OutlinedDate=(TextInputLayout) view.findViewById(R.id.outlined_date_of_birth);
         School = (AutoCompleteTextView) view.findViewById(R.id.school);
+        DateOfBirth = view.findViewById(R.id.date_of_birth);
         MobileNumber=view.findViewById((R.id.mobile_number));
         EmailId=view.findViewById(R.id.email_id);
         AccademicNext = view.findViewById(R.id.accademic_next);
@@ -81,6 +91,10 @@ public class AccademicDetailsFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(getContext());
+
+        MaterialDatePicker.Builder builder=MaterialDatePicker.Builder.datePicker();
+        builder.setTitleText("SELECT A DATE OF BIRTH");
+        MaterialDatePicker materialDatePicker=builder.build();
 
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
@@ -135,7 +149,27 @@ public class AccademicDetailsFragment extends Fragment {
 //        School.setThreshold(1);
 //        ===how many characters required to load suggestion spinner ==
 
-
+        DateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                materialDatePicker.show(getActivity().getSupportFragmentManager(), "DATE_PICKER");
+            }
+        });
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Object selection) {
+                DateOfBirth.setText(materialDatePicker.getHeaderText());
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd mmm yyyy");
+                try {
+                    Date parsedDate = dateFormat.parse(DateOfBirth.getText().toString());
+                    Timestamp DOBtimestamp = new java.sql.Timestamp(parsedDate.getTime());
+                    System.out.println(DOBtimestamp);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    System.out.println("ERROR");
+                }
+            }
+        });
         AccademicNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,6 +184,8 @@ public class AccademicDetailsFragment extends Fragment {
                     School.setError("Please Fill the School");
                 }else if(TextUtils.isEmpty(MobileNumber.getText().toString())){
                     MobileNumber.setError("Please Fill the Mobile Number");
+                }else if(TextUtils.isEmpty(DateOfBirth.getText().toString())){
+                    MobileNumber.setError("Please Select The Date of Birth");
                 }else{
                     progressDialog.show();
                     progressDialog.setMessage("Loading...");
@@ -168,7 +204,16 @@ public class AccademicDetailsFragment extends Fragment {
                     UserDetails.put("School",School.getText().toString());
                     UserDetails.put("MobileNumber",MobileNumber.getText().toString());
                     UserDetails.put("EmailId",EmailId.getText().toString());
-
+//                    UserDetails.put("DOB",EmailId.getText().toString());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd mmm yyyy");
+                    try {
+                        Date parsedDate = dateFormat.parse(DateOfBirth.getText().toString());
+                        Timestamp DOBtimestamp = new java.sql.Timestamp(parsedDate.getTime());
+                        System.out.println(DOBtimestamp);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println();
                     db.collection("Users")
                             .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .set(UserDetails)
