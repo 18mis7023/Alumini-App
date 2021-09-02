@@ -101,7 +101,7 @@
             android:id="@+id/forgot_passwd_text"
             android:clickable="true"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -112,7 +112,7 @@
             android:id="@+id/register_text"
             android:clickable="true"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>

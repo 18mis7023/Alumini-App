@@ -58,7 +58,7 @@ public class PersonalDetailsFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(getContext());
 
-        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+       /* int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
@@ -87,6 +87,8 @@ public class PersonalDetailsFragment extends Fragment {
                 PermanentAddress.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
+
+        */
 
         PersonalBack.setOnClickListener(view12 ->
                 getFragmentManager().beginTransaction().replace(R.id.frame_layout,new AccademicDetailsFragment()).commit()

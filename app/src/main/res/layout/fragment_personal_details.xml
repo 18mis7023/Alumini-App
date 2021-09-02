@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -117,6 +118,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/father_mobile_number"
             android:inputType="number"
+            android:maxLength="10"
             android:background="@color/white"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -157,6 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mother_mobile_number"
+            android:maxLength="10"
             android:inputType="number"
             android:background="@color/white"
             />

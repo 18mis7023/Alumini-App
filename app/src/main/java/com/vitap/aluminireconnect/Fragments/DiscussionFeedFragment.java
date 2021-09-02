@@ -378,11 +378,14 @@ public class DiscussionFeedFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
                                 holder.clubName.setText(Objects.requireNonNull(document.get("FirstName")).toString());
-                                //  Picasso.get()
-                                //         .load(Objects.requireNonNull(document.get("ProfileImgUrl")).toString())
-                                //       .centerInside()
-                                //      .resize(300,200)
-                                //     .into(holder.ClubImg);
+                                String ImageUrl = document.get("ProfileImage").toString();
+                                if (!ImageUrl.equals("null")) {
+                                    Picasso.get()
+                                            .load(ImageUrl)
+                                            .centerInside()
+                                            .resize(300, 200)
+                                            .into(holder.ClubImg);
+                                }
                             }
                         });
 

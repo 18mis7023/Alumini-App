@@ -62,8 +62,9 @@
                         android:layout_marginEnd="10dp"
                         android:id="@+id/current_user_prof_img"
                         android:layout_width="30dp"
-                        android:src="@drawable/ic_group_persons_icon"
-                        android:layout_height="30dp">
+                        android:src="@drawable/ic_baseline_person_outline_24"
+                        android:layout_height="30dp"
+                        app:tint="@color/black">
                     </ImageView>
                 </com.google.android.material.card.MaterialCardView>
                 <EditText

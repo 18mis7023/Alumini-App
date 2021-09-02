@@ -46,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         ConstraintLayout background = findViewById(R.id.background);
-        int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+       /* int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
                 //light mode
@@ -69,6 +70,8 @@ public class LoginActivity extends AppCompatActivity {
                 Register.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
+
+        */
 
         MaterialCardView BackCard = findViewById(R.id.back_card);
         BackCard.setOnClickListener(view -> {

@@ -53,7 +53,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.commen
         String ago = prettyTime.format(date);
         holder.Time.setText(ago);
 
-
         FirebaseFirestore.getInstance().collection("Users")
                 .document(commentsList.get(position).getUserId())
                 .get()
@@ -61,11 +60,14 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.commen
                     if (task.isSuccessful()){
                             DocumentSnapshot document = task.getResult();
                             String name = Objects.requireNonNull(document.get("FirstName")).toString();
-                            //String url = Objects.requireNonNull(document.get("ProfileImgUrl")).toString();
+                            String url = Objects.requireNonNull(document.get("ProfileImage")).toString();
                             holder.Name.setText(name);
-                            //Picasso.get()
-                             //       .load(url)
-                             //       .into(UserProfileImg);
+                            if (!url.equals("null")) {
+                                holder.UserProfileImg.setImageTintMode(null);
+                                Picasso.get()
+                                      .load(url)
+                                     .into(holder.UserProfileImg);
+                            }
                     }else Toast.makeText(context, "error : "+task.getException(), Toast.LENGTH_SHORT).show();
                 });
 

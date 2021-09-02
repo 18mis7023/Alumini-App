@@ -52,7 +52,8 @@
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"></Space>
+                    android:layout_weight="1">
+                </Space>
 
                 <Button
                     android:layout_width="40dp"
@@ -66,7 +67,8 @@
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"></Space>
+                    android:layout_weight="1">
+                </Space>
 
                 <Button
                     android:layout_width="40dp"
@@ -81,7 +83,8 @@
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="5"></Space>
+                    android:layout_weight="5">
+                </Space>
 
             </LinearLayout>
 
@@ -149,6 +152,7 @@
                     android:id="@+id/registration_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="9"
                     android:background="@color/white"
                     android:inputType="text"
                     tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -190,6 +194,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/mobile_number"
+                    android:maxLength="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"

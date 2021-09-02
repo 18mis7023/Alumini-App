@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/bottomsheet_bg"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:textSize="15sp"
+        android:text="Update your profile image"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/f_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/profile_img_card"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
+        android:layout_height="150dp">
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/profile_img"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/ic_baseline_person_outline_24"
+            android:layout_height="match_parent">
+        </ImageView>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:layout_width="wrap_content"
+        android:id="@+id/dont_show_again"
+        android:checked="false"
+        android:text="Don't show again."
+        android:layout_height="wrap_content">
+    </com.google.android.material.checkbox.MaterialCheckBox>
+
+    <Button
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="Skip"
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Button>
+
+</LinearLayout>

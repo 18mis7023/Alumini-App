@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -96,6 +98,7 @@ public class AccademicDetailsFragment extends Fragment {
         builder.setTitleText("SELECT A DATE OF BIRTH");
         MaterialDatePicker materialDatePicker=builder.build();
 
+      /*
         int currentNightMode = this.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
@@ -129,6 +132,8 @@ public class AccademicDetailsFragment extends Fragment {
                 EmailId.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
+
+       */
         String[] schoolItems=new String[]{
                 "SCOPE","SENSE",
                 "SMEC","VSB",
@@ -197,21 +202,23 @@ public class AccademicDetailsFragment extends Fragment {
                   PersonalDetailsFragment personalFragment=new PersonalDetailsFragment();
 //                personalFragment.setArguments(bundle);
 
-                    HashMap UserDetails=new HashMap();
+                    HashMap<String,Object> UserDetails= new HashMap<>();
                     UserDetails.put("FirstName",FirstName.getText().toString());
                     UserDetails.put("LastName",LastName.getText().toString());
                     UserDetails.put("RegistrationNumber",RegistrationNumber.getText().toString());
                     UserDetails.put("School",School.getText().toString());
                     UserDetails.put("MobileNumber",MobileNumber.getText().toString());
                     UserDetails.put("EmailId",EmailId.getText().toString());
-//                    UserDetails.put("DOB",EmailId.getText().toString());
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd mmm yyyy");
+                    UserDetails.put("ProfileImage","null");
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
                     try {
-                        Date parsedDate = dateFormat.parse(DateOfBirth.getText().toString());
-                        Timestamp DOBtimestamp = new java.sql.Timestamp(parsedDate.getTime());
-                        System.out.println(DOBtimestamp);
+                        UserDetails.put("DOB",new Date(String.valueOf(dateFormat.parse(DateOfBirth.getText().toString()))));
                     } catch (ParseException e) {
                         e.printStackTrace();
+                        Toast.makeText(getContext(), "error"+e, Toast.LENGTH_SHORT).show();
+                        Log.e("error",e.toString());
+                        UserDetails.put("DOB",EmailId.getText().toString());
                     }
                     System.out.println();
                     db.collection("Users")

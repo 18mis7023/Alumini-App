@@ -42,7 +42,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(this,RegistrationActivity.class));
                 finish();
             }else {
-                Toast.makeText(this, "User login done and all details available", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();

@@ -47,7 +47,6 @@ public class NewPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
-
         PD = new ProgressDialog(this);
         PostImage = findViewById(R.id.post_img);
         LinearLayout upload_img = findViewById(R.id.upload_img);
@@ -61,7 +60,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         post_bt.setOnClickListener(v -> {
             if (Objects.requireNonNull(Title_ET.getText()).toString().isEmpty() || Objects.requireNonNull(Desc_ET.getText()).toString().isEmpty()){
-                Toast.makeText(this, "Title and Description is need", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Filter and Description can't empty", Toast.LENGTH_SHORT).show();
             } else {
                 PostKey = db.collection("Posts").document();
                 PostId = PostKey.getId();
@@ -93,7 +92,6 @@ public class NewPostActivity extends AppCompatActivity {
             Post.put("ImgUrl",ImageUrl);
         }else Post.put("ImgUrl","");
 
-
         Post.put("Filter", Objects.requireNonNull(Title_ET.getText()).toString().trim());
         Post.put("Desc", Objects.requireNonNull(Desc_ET.getText()).toString().trim());
         Post.put("UserId", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid() );
@@ -107,7 +105,6 @@ public class NewPostActivity extends AppCompatActivity {
                     PD.dismiss();
                     Toast.makeText(NewPostActivity.this, "Error : "+e, Toast.LENGTH_SHORT).show();
                 });
-
 
     }
 
