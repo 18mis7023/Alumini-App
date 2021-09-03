@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/home"
+        app:showAsAction="always"
+        android:title="Home" android:icon="@drawable/ic_home">
+    </item>
+    <item android:id="@+id/new_post" android:title="New post"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_new_post">
+    </item>
+
+    <item android:id="@+id/chat" android:title="Chat"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat">
+    </item>
+
+    <item android:id="@+id/profile" android:title="Profile"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_icon">
+    </item>
+
+</menu>

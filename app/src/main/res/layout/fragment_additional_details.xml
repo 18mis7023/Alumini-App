@@ -3,16 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerInParent="true"
+    android:id="@+id/additional_relative_fragment"
     tools:context=".Fragments.AccademicDetailsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Personal Details"
+        android:text="Additional Details"
         android:id="@+id/personal_details"
-        android:layout_margin="20px"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:textSize="21sp"/>
 
     <LinearLayout
@@ -20,12 +30,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/personal_details"
-        android:layout_margin="20px"
-        android:id="@+id/personal_status_bar">
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/additional_status_bar">
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
             android:background="@drawable/round_button"
             />
         <Space
@@ -34,9 +49,12 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="2"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:background="@drawable/round_button"
             />
         <Space
@@ -45,9 +63,12 @@
             android:layout_weight="1" >
         </Space>
         <Button
-            android:layout_width="150px"
-            android:layout_height="150px"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:text="3"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:background="@drawable/round_button"
             />
         <Space
@@ -57,33 +78,116 @@
         </Space>
 
     </LinearLayout>
-
-    <Spinner
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_placed_or_not"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/personal_status_bar"
-        android:layout_margin="20px"
-        android:id="@+id/placed_or_not"
-        android:spinnerMode="dropdown"/>
+        android:hint="Placed / Not Placed"
+        android:layout_below="@+id/additional_status_bar"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/placed_or_not"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
+            android:background="@color/white"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!-- Placed or not when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_placed_or_not_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_placed_or_not"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/placed_or_not_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_higher_education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Planning for Higher Education"
+        android:layout_below="@+id/outlined_placed_or_not_if_yes"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/higher_education"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
+            android:background="@color/white"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!-- Higher Education when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_higher_education_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_higher_education"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/higher_education_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlined_feedback_on_circullum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Father's Name"
-        android:layout_below="@+id/placed_or_not"
-        android:layout_margin="20px"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
+        android:hint="Feedback on circulum"
+        android:layout_below="@+id/outlined_higher_education_if_yes"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/feedback_on_circullum"
-            android:inputType="number"
-
+            android:inputType="text"
+            
+            android:background="@color/white"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,41 +197,145 @@
         android:layout_height="wrap_content"
         android:hint="Feedback on Campus"
         android:layout_below="@+id/outlined_feedback_on_circullum"
-        android:layout_margin="20px"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:background="#ffffff"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/feedback_on_campus"
-            android:inputType="number"
-
+            android:inputType="text"
+            android:background="@color/white"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_attended_any_competative_exam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Attended any competitive exam"
+        android:layout_below="@+id/outlined_feedback_on_campus"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/attended_any_competative_exam"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
+            android:background="@color/white"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!-- Competative Exam when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_attended_any_competative_exam_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_attended_any_competative_exam"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/attended_any_competative_exam_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_involved_in_any_startup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="involved in any startup"
+        android:layout_below="@+id/outlined_attended_any_competative_exam_if_yes"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        app:endIconMode="dropdown_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/involved_in_any_startup"
+            android:focusableInTouchMode="true"
+            android:focusable="false"
+
+            android:background="@color/white"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!-- StartUp when it is selected yes then the below box will appear-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_involved_in_any_startup_if_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Where you have been placed"
+        android:layout_below="@+id/outlined_involved_in_any_startup"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:visibility="gone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/involved_in_any_startup_if_yes"
+            android:inputType="text"
+
+            android:background="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/additional_back"
         android:layout_width="300px"
         android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_feedback_on_campus"
-        android:layout_margin="20px"
+        android:layout_below="@id/outlined_involved_in_any_startup_if_yes"
         android:layout_alignParentLeft="true"
-        android:id="@+id/personal_back"
-        android:text="BACK"
-        android:background="@drawable/background_button"/>
-    <Button
-        android:layout_width="300px"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/outlined_feedback_on_campus"
-        android:layout_margin="20px"
-        android:layout_alignParentRight="true"
-        android:id="@+id/additional_submit"
-        android:text="SUBMIT"
-        android:background="@drawable/background_button"/>
+        android:textStyle="bold"
+        android:windowSoftInputMode="stateVisible|adjustResize"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
+        app:backgroundTint="@color/aluminium"
+        android:text="BACK" />
 
+            <Button
+                android:id="@+id/additional_submit"
+                android:layout_width="300px"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/outlined_involved_in_any_startup_if_yes"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/brown"
+                android:text="SUBMIT"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
-
+        </RelativeLayout>
+    </ScrollView>
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white" />
 </RelativeLayout>
