@@ -1,5 +1,7 @@
 package com.vitap.aluminireconnect;
 
+import static java.security.AccessController.getContext;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,13 +39,14 @@ import java.util.Objects;
 
 public class NewPostActivity extends AppCompatActivity {
 
-    private TextInputEditText Title_ET,Desc_ET;
-    private ImageView PostImage;
+    private TextInputEditText Desc_ET;
+    private ImageView PostImage,postSelectedImage;
     private Uri uri = null;
     private String ImageUrl = null,PostId;
     private ProgressDialog PD;
     private FirebaseFirestore db;
     private DocumentReference PostKey;
+    private AutoCompleteTextView addFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +55,29 @@ public class NewPostActivity extends AppCompatActivity {
 
         PD = new ProgressDialog(this);
         PostImage = findViewById(R.id.post_img);
+        postSelectedImage=findViewById(R.id.post_selected_img);
         RelativeLayout upload_img = findViewById(R.id.upload_img);
-        Title_ET = findViewById(R.id.title_et);
+//        Title_ET = findViewById(R.id.title_et);
         Desc_ET = findViewById(R.id.desc_et);
         MaterialCardView post_bt = findViewById(R.id.post_bt);
         db = FirebaseFirestore.getInstance();
+        addFilter=findViewById(R.id.add_filter);
 
         upload_img.setOnClickListener(v -> ImagePicker());
         PostImage.setOnClickListener(v -> ImagePicker());
 
+        String[] addFilterItems=new String[]{
+                "Discussion","NewsFeed",
+                "Memories",
+                "Events"
+        };
+        ArrayAdapter<String> schoolAdapter=new ArrayAdapter<>(
+                this,R.layout.dropdown_item,addFilterItems
+        );
+        addFilter.setAdapter(schoolAdapter);
+
         post_bt.setOnClickListener(v -> {
-            if (Objects.requireNonNull(Title_ET.getText()).toString().isEmpty() || Objects.requireNonNull(Desc_ET.getText()).toString().isEmpty()){
+            if (Objects.requireNonNull(addFilter.getText()).toString().isEmpty() || Objects.requireNonNull(Desc_ET.getText()).toString().isEmpty()){
                 Toast.makeText(this, "Filter and Description can't empty", Toast.LENGTH_SHORT).show();
             } else {
                 PostKey = db.collection("Posts").document();
@@ -93,7 +110,7 @@ public class NewPostActivity extends AppCompatActivity {
             Post.put("ImgUrl",ImageUrl);
         }else Post.put("ImgUrl","");
 
-        Post.put("Filter", Objects.requireNonNull(Title_ET.getText()).toString().trim());
+        Post.put("Filter", Objects.requireNonNull(addFilter.getText()).toString().trim());
         Post.put("Desc", Objects.requireNonNull(Desc_ET.getText()).toString().trim());
         Post.put("UserId", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid() );
         Post.put("Time", FieldValue.serverTimestamp());
@@ -113,9 +130,9 @@ public class NewPostActivity extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         PD.setMessage("Uploading...");
-        PostImage.setDrawingCacheEnabled(true);
-        PostImage.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) PostImage.getDrawable()).getBitmap();
+        postSelectedImage.setDrawingCacheEnabled(true);
+        postSelectedImage.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) postSelectedImage.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -147,7 +164,7 @@ public class NewPostActivity extends AppCompatActivity {
             assert data != null;
             uri = data.getData();
             if (requestCode == 0) {
-                PostImage.setImageURI(uri);
+                postSelectedImage.setImageURI(uri);
             }
 
         } else if (resultCode == ImagePicker.RESULT_ERROR) {

@@ -49,18 +49,20 @@
                 android:layout_height="wrap_content">
             </TextView>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="10dp"
-            android:layout_height="wrap_content">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingVertical="10dp"-->
+<!--            android:paddingHorizontal="10dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="20dp">-->
 
             <RelativeLayout
                 android:background="@drawable/profile_background"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:padding="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_height="match_parent">
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="100dp"
@@ -95,26 +97,59 @@
                 </TextView>
 
             </RelativeLayout>
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:id="@+id/outlined_add_filter_block"
+                android:layout_height="55dp"
                 android:layout_marginTop="20dp"
                 android:hint="Add Filter"
-                app:counterEnabled="true"
-                app:counterMaxLength="30">
+                app:counterEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/title_et"
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
                     android:background="@color/white"
-                    android:maxLength="30"></com.google.android.material.textfield.TextInputEditText>
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlined_add_filter"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/outlined_add_filter_block"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="10dp"
+                android:hint="Select Filter"
+                app:endIconMode="dropdown_menu"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/add_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@color/white"
+                    android:focusable="false"
+                    android:focusableInTouchMode="true"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
 
 
-        </LinearLayout>
+
+<!--        </LinearLayout>-->
 
         <RelativeLayout
             android:id="@+id/upload_img"
@@ -141,14 +176,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:drawableLeft="@+id/plus"
                 android:text="Upload Image"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"></TextView>
 
-        </RelativeLayout>
 
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/post_selected_img"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+
+            ></ImageView>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:hint="write down your Description here"
@@ -177,7 +219,8 @@
             android:padding="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
-            app:cardElevation="8dp">
+            app:cardElevation="8dp"
+            android:layout_marginBottom="20dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
