@@ -139,7 +139,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/add_filter"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="52dp"
                     android:background="@color/white"
                     android:focusable="false"
                     android:focusableInTouchMode="true"
@@ -164,12 +164,12 @@
             android:background="@color/white"
             android:layout_marginBottom="10dp"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/post_img"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="3dp"
@@ -184,7 +184,7 @@
                 android:layout_centerInParent="true"
                 android:text="Upload Image"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="18sp"
                 android:textStyle="bold"></TextView>
 
 
@@ -253,7 +253,7 @@
                     android:layout_centerInParent="true"
                     android:text="Post"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"></TextView>
 
             </RelativeLayout>
