@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -49,7 +50,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         PD = new ProgressDialog(this);
         PostImage = findViewById(R.id.post_img);
-        LinearLayout upload_img = findViewById(R.id.upload_img);
+        RelativeLayout upload_img = findViewById(R.id.upload_img);
         Title_ET = findViewById(R.id.title_et);
         Desc_ET = findViewById(R.id.desc_et);
         MaterialCardView post_bt = findViewById(R.id.post_bt);
