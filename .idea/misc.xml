@@ -18,6 +18,7 @@
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_home.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_intro.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_login.xml" value="0.12386018237082067" />
+        <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_main.xml" value="0.10833333333333334" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_new_post.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_registration.xml" value="0.13677536231884058" />
         <entry key="..\:/Users/Hemanth/AndroidStudioProjects/Alumini-App/app/src/main/res/layout/activity_splash.xml" value="0.12386018237082067" />
@@ -44,7 +45,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
