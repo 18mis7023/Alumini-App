@@ -51,8 +51,6 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
-
-
         String postId = getIntent().getStringExtra("PostId");
         final String[] desc = {""};
         try {

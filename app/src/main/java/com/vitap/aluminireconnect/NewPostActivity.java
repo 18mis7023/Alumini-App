@@ -2,6 +2,7 @@ package com.vitap.aluminireconnect;
 
 import static java.security.AccessController.getContext;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,18 +20,24 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
@@ -62,6 +69,34 @@ public class NewPostActivity extends AppCompatActivity {
         MaterialCardView post_bt = findViewById(R.id.post_bt);
         db = FirebaseFirestore.getInstance();
         addFilter=findViewById(R.id.add_filter);
+
+        ImageView ProfileImage = findViewById(R.id.profile_image);
+        TextView userName = findViewById(R.id.user_name);
+        String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        FirebaseFirestore.getInstance()
+                .collection("Users")
+                .document(UID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()){
+                            DocumentSnapshot snapshot = task.getResult();
+                            String UserName = snapshot.get("FirstName").toString()+" "+snapshot.get("LastName").toString();
+                            userName.setText(UserName);
+                            String ImageUrl = snapshot.get("ProfileImage").toString();
+                            ProfileImage.setImageTintMode(null);
+                            if (!ImageUrl.equals("null")){
+                                Picasso.get()
+                                        .load(ImageUrl)
+                                        .into(ProfileImage);
+                            }
+                        }
+                    }
+                });
+
+
 
         upload_img.setOnClickListener(v -> ImagePicker());
         PostImage.setOnClickListener(v -> ImagePicker());

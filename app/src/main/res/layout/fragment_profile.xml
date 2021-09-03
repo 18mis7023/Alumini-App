@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ProfileFragment">
 
-   <ScrollView
+   <androidx.core.widget.NestedScrollView
+       android:fillViewport="false"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
       <LinearLayout
@@ -71,11 +72,41 @@
                </TextView>
             </RelativeLayout>
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+               <com.google.android.material.card.MaterialCardView
+                   android:layout_width="70dp"
+                   android:layout_margin="10dp"
+                   app:cardCornerRadius="10dp"
+                   app:cardElevation="10dp"
+                   android:id="@+id/add_link"
+                   android:layout_height="70dp">
+                  <ImageView
+                      android:src="@drawable/ic_baseline_add_circle_24"
+                      android:layout_width="50dp"
+                      android:layout_gravity="center"
+                      android:layout_height="50dp">
+                  </ImageView>
+               </com.google.android.material.card.MaterialCardView>
 
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/links_recycler"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+               </androidx.recyclerview.widget.RecyclerView>
 
+            </LinearLayout>
 
-
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_marginTop="30dp"
+             android:id="@+id/post_recycler"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+         </androidx.recyclerview.widget.RecyclerView>
       </LinearLayout>
-   </ScrollView>
+   </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

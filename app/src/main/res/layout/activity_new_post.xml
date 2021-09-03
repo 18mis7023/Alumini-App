@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:paddingBottom="20dp"
     android:background="#E5E5E5"
     tools:context=".NewPostActivity">
 
@@ -49,13 +50,6 @@
                 android:layout_height="wrap_content">
             </TextView>
         </LinearLayout>
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingVertical="10dp"-->
-<!--            android:paddingHorizontal="10dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="20dp">-->
 
             <RelativeLayout
                 android:background="@drawable/profile_background"
@@ -155,7 +149,7 @@
 
 
 
-<!--        </LinearLayout>-->
+
 
         <RelativeLayout
             android:id="@+id/upload_img"
@@ -175,7 +169,8 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="3dp"
-                android:src="@drawable/ic_baseline_add_circle_24"></ImageView>
+                android:src="@drawable/ic_baseline_add_circle_24">
+            </ImageView>
 
             <TextView
                 android:id="@+id/txt_upload_img"
@@ -185,22 +180,20 @@
                 android:text="Upload Image"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+            </TextView>
 
 
         </RelativeLayout>
         <ImageView
             android:id="@+id/post_selected_img"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-
-
-            ></ImageView>
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+        </ImageView>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:hint="write down your Description here"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:counterEnabled="true"
             app:counterMaxLength="500"
             android:layout_height="wrap_content">
@@ -212,9 +205,9 @@
                 android:background="@color/white"
                 android:maxLength="500"
                 android:maxLines="10"
-                android:minLines="4"></com.google.android.material.textfield.TextInputEditText>
+                android:minLines="4">
+            </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/post_bt"
@@ -224,28 +217,12 @@
             android:layout_marginTop="20dp"
             android:padding="10dp"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            android:layout_marginBottom="20dp">
-            android:outlineAmbientShadowColor="#FC0E66"
-            android:outlineSpotShadowColor="#FC0E66"
-            app:cardBackgroundColor="#FC0E66"
-            app:cardCornerRadius="15dp"
-<!--            app:cardElevation="15dp"-->
+            app:cardCornerRadius="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp">
-
-<!--                <ImageView-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:layout_marginStart="3dp"-->
-<!--                    android:layout_marginTop="3dp"-->
-<!--                    android:layout_marginEnd="3dp"-->
-<!--                    android:layout_marginBottom="3dp"-->
-<!--                    android:src="@drawable/ic_baseline_add_circle_24"></ImageView>-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -254,7 +231,8 @@
                     android:text="Post"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold">
+                </TextView>
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
