@@ -72,10 +72,16 @@ public class FeedModel {
         UserId = userId;
         PostId = postId;
         Time = time;
-
     }
 
-   /* public String getDyLink() {
+    public FeedModel(String desc, String imgUrl, String postId, Date time) {
+        Desc = desc;
+        ImgUrl = imgUrl;
+        PostId = postId;
+        Time = time;
+    }
+
+    /* public String getDyLink() {
         return DyLink;
     }
 

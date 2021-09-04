@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:background="#E5E5E5"
     android:layout_height="match_parent"
     tools:context=".Fragments.DiscussionFeedFragment">
     <androidx.core.widget.NestedScrollView
@@ -47,7 +47,8 @@
                     android:layout_alignParentEnd="true"
                     android:background="#00000000"
                     android:src="@drawable/ic_baseline_add_circle_24"
-                    tools:ignore="TouchTargetSizeCheck"></ImageButton>
+                    tools:ignore="TouchTargetSizeCheck">
+                </ImageButton>
             </RelativeLayout>
 
             <HorizontalScrollView
@@ -141,15 +142,16 @@
             android:layout_below="@+id/top_layout"
             android:layout_marginBottom="70sp"
             android:paddingVertical="10dp"
-            android:scrollY="1dp"></androidx.recyclerview.widget.RecyclerView>
+            android:scrollY="1dp">
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <ProgressBar
-        android:id="@+id/progress_circular"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ProgressBar>
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center">
+        </ProgressBar>
     </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

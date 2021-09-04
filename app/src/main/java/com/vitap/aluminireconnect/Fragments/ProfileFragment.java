@@ -1,17 +1,26 @@
 package com.vitap.aluminireconnect.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.paging.LoadState;
+import androidx.paging.PagingConfig;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -19,25 +28,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
+import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+import com.vitap.aluminireconnect.CommentsActivity;
+import com.vitap.aluminireconnect.NewPostActivity;
+import com.vitap.aluminireconnect.PrettytimeFromat;
 import com.vitap.aluminireconnect.R;
 import com.vitap.aluminireconnect.adapters.LinksAdapter;
+import com.vitap.aluminireconnect.adapters.UserPostsAdapter;
+import com.vitap.aluminireconnect.model.FeedModel;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class ProfileFragment extends Fragment {
@@ -55,6 +89,9 @@ public class ProfileFragment extends Fragment {
     private RecyclerView SocialLinksRecycler;
     public LinksAdapter linksAdapter;
     private LinearLayoutManager layoutManager;
+    public ArrayList<FeedModel> FeedList;
+    public UserPostsAdapter userPostsAdapter;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -80,13 +117,40 @@ public class ProfileFragment extends Fragment {
         fireStore =  FirebaseFirestore.getInstance();
         SocialLinksRecycler = view.findViewById(R.id.links_recycler);
 
-        UserDocument = fireStore.collection("Users").document(UID);
+        PostRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        FeedList = new ArrayList<>();
 
+        UserDocument = fireStore.collection("Users").document(UID);
         SocialLinksRecycler.setHasFixedSize(true);
         // The number of Columns
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         SocialLinksRecycler.setLayoutManager(layoutManager);
 
+        fireStore.collection("Posts")
+                .whereEqualTo("UserId",FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    String ImageUrl = document.getString("ImgUrl");
+                                    String Description = document.getString("Desc");
+                                    Timestamp Time = document.getTimestamp("Time");
+                                    String PostId = document.getId();
+                                    FeedList.add(new FeedModel(Description,ImageUrl,PostId,Time.toDate()));
+                                }
+                                userPostsAdapter = new UserPostsAdapter(getContext(),FeedList);
+                                PostRecycler.setAdapter(userPostsAdapter);
+                                userPostsAdapter.notifyDataSetChanged();
+                            }
+                        }else {
+                            Toast.makeText(getContext(), "error "+task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
         AddLink.setOnClickListener(view12 -> {
 
@@ -139,6 +203,8 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
+
+
         return view;
     }
 
@@ -185,4 +251,8 @@ public class ProfileFragment extends Fragment {
                     });
 
     }
+
+
+
+
 }

@@ -126,9 +126,7 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginRight="10dp"
                 android:hint="Select Filter"
-                app:endIconMode="dropdown_menu"
-
-                >
+                app:endIconMode="dropdown_menu">
 
                 <AutoCompleteTextView
                     android:id="@+id/add_filter"
@@ -146,10 +144,6 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
-
-
-
-
 
         <RelativeLayout
             android:id="@+id/upload_img"
@@ -188,6 +182,7 @@
         <ImageView
             android:id="@+id/post_selected_img"
             android:layout_width="300dp"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content">
         </ImageView>

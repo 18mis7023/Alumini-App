@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.paging.LoadState;
 import androidx.paging.PagingConfig;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -136,13 +137,129 @@ public class DiscussionFeedFragment extends Fragment {
 
          */
 
-        Query query = fireStore.collection("Posts")
+        Query query = fireStore
+                .collection("Posts")
                 .orderBy("Time", Query.Direction.DESCENDING);
 
-        PagingConfig config =  new PagingConfig(3,1);
+        PagingConfig config =  new PagingConfig(2,2);
+
+        FirestorePagingOptions<FeedModel> options = new FirestorePagingOptions.Builder<FeedModel>()
+                .setLifecycleOwner(this)
+                .setQuery(query, config, snapshot -> {
+                    String Title = Objects.requireNonNull(snapshot.get("Filter")).toString();
+                    String ImgUrl = Objects.requireNonNull(snapshot.get("ImgUrl")).toString();
+                    String Desc = Objects.requireNonNull(snapshot.get("Desc")).toString();
+                    String UserId = Objects.requireNonNull(snapshot.get("UserId")).toString();
+                    String postId = snapshot.getId();
+                    Timestamp Time = snapshot.getTimestamp("Time");
+
+                    return new FeedModel(
+                            Title, Desc, ImgUrl, UserId, postId,
+                            Objects.requireNonNull(Time).toDate()
+                    );
+                })
+                .build();
 
 
-        Pagging(query,config);
+        adapter = new FirestorePagingAdapter<FeedModel, FeedViewHolder>(options) {
+
+            @NonNull
+            public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_recycler_items, parent, false);
+                return new FeedViewHolder(view);
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            protected void onBindViewHolder(@NonNull FeedViewHolder holder, int position, @NonNull FeedModel model) {
+
+                holder.FilterText.setText(model.getFilter());
+                holder.ImageView.setImageTintList(null);
+
+                holder.time.setText(new PrettytimeFromat().Ago(model.getTime().toString()));
+
+                String PostId = model.getPostId();
+                String Desc = model.getDesc();
+                String UserId = model.getUserId();
+                holder.Decs.setText(Desc);
+
+                if (!model.getImgUrl().isEmpty()) {
+                    Picasso.get()
+                            .load(model.getImgUrl())
+                            .into(holder.ImageView);
+                    holder.Decs.setMaxLines(3);
+                    holder.Decs.setEllipsize(TextUtils.TruncateAt.END);
+                } else {
+                    holder.ImageView.setVisibility(View.GONE);
+                    holder.Decs.setMaxLines(14);
+                    holder.Decs.setSingleLine(false);
+                }
+
+                FirebaseFirestore.getInstance()
+                        .collection("Users")
+                        .document(UserId)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                holder.clubName.setText(Objects.requireNonNull(document.get("FirstName")).toString());
+                                String ImageUrl = document.get("ProfileImage").toString();
+                                if (!ImageUrl.equals("null")) {
+                                    Picasso.get()
+                                            .load(ImageUrl)
+                                            .centerInside()
+                                            .resize(300, 200)
+                                            .into(holder.ClubImg);
+                                }
+                            }
+                        });
+
+                holder.Comment.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
+                holder.PostCard.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
+                holder.Decs.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
+                holder.ImageView.setOnClickListener(v -> {
+                    Bitmap bitmap = ((BitmapDrawable) holder.ImageView.getDrawable()).getBitmap();
+                    ShowImage(bitmap);
+                });
+
+                holder.clubName.setOnClickListener(v -> {
+                   /*
+                    Intent intent = new Intent(context, Profile.class);
+                    intent.putExtra("UserId", model.getUserId());
+                    context.startActivity(intent);
+                    */
+                    Toast.makeText(getContext(), "profile", Toast.LENGTH_SHORT).show();
+                });
+                holder.ClubImg.setOnClickListener(v -> {
+                    Toast.makeText(getContext(), "profile", Toast.LENGTH_SHORT).show();
+                });
+
+               /*
+               holder.Share.setOnClickListener(v -> {
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, model.getDyLink());
+                    sendIntent.setType("text/plain");
+                    Intent shareIntent = Intent.createChooser(sendIntent, null);
+                    startActivity(shareIntent);
+                });
+
+                */
+
+                holder.setLikesButtonStatus(PostId);
+                holder.getCommentsCount(PostId);
+
+                holder.Like.setOnClickListener(v -> {
+                    LikeClick(model.getPostId(), holder.Like);
+                });
+                holder.LikesLayout.setOnClickListener(view ->
+                        LikeClick(model.getPostId(), holder.Like)
+                );
+
+            }
+
+        };
+
 
 
         EventsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -174,6 +291,7 @@ public class DiscussionFeedFragment extends Fragment {
                 // The initial Load has begun
                 // ...
 
+                progressBar.setVisibility(View.VISIBLE);
             }
 
 
@@ -210,7 +328,7 @@ public class DiscussionFeedFragment extends Fragment {
 
 
 
-    private class FeedViewHolder extends RecyclerView.ViewHolder {
+    public class FeedViewHolder extends RecyclerView.ViewHolder {
         TextView FilterText, Decs, time, clubName, likesCount, CommentsCount;
         android.widget.ImageView ImageView, ClubImg;
         ImageButton Like, Comment;
@@ -315,128 +433,7 @@ public class DiscussionFeedFragment extends Fragment {
         adapter.stopListening();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void Pagging(Query query, PagingConfig config){
-        progressBar.setVisibility(View.VISIBLE);
-        FirestorePagingOptions<FeedModel> options = new FirestorePagingOptions.Builder<FeedModel>()
-                .setLifecycleOwner(this)
-                .setQuery(query, config, snapshot -> {
-                    String Title = Objects.requireNonNull(snapshot.get("Filter")).toString();
-                    String ImgUrl = Objects.requireNonNull(snapshot.get("ImgUrl")).toString();
-                    String Desc = Objects.requireNonNull(snapshot.get("Desc")).toString();
-                    String UserId = Objects.requireNonNull(snapshot.get("UserId")).toString();
-                    String postId = snapshot.getId();
-                    Timestamp Time = snapshot.getTimestamp("Time");
 
-                    return new FeedModel(
-                            Title, Desc, ImgUrl, UserId, postId,
-                            Objects.requireNonNull(Time).toDate()
-                    );
-                })
-                .build();
-
-
-        adapter = new FirestorePagingAdapter<FeedModel, FeedViewHolder>(options) {
-
-            @NonNull
-            public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_recycler_items, parent, false);
-                return new FeedViewHolder(view);
-            }
-
-            @SuppressLint("SetTextI18n")
-            @Override
-            protected void onBindViewHolder(@NonNull FeedViewHolder holder, int position, @NonNull FeedModel model) {
-
-                holder.FilterText.setText(model.getFilter());
-                holder.ImageView.setImageTintList(null);
-
-                holder.time.setText(new PrettytimeFromat().Ago(model.getTime().toString()));
-
-                String PostId = model.getPostId();
-                String Desc = model.getDesc();
-                String UserId = model.getUserId();
-                holder.Decs.setText(Desc);
-
-                if (!model.getImgUrl().isEmpty()) {
-                    Picasso.get()
-                            .load(model.getImgUrl())
-                            .into(holder.ImageView);
-                    holder.Decs.setMaxLines(3);
-                    holder.Decs.setEllipsize(TextUtils.TruncateAt.END);
-                } else {
-                    holder.ImageView.setVisibility(View.GONE);
-                    holder.Decs.setMaxLines(14);
-                    holder.Decs.setSingleLine(false);
-                }
-
-                FirebaseFirestore.getInstance()
-                        .collection("Users")
-                        .document(UserId)
-                        .get()
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                holder.clubName.setText(Objects.requireNonNull(document.get("FirstName")).toString());
-                                String ImageUrl = document.get("ProfileImage").toString();
-                                if (!ImageUrl.equals("null")) {
-                                    Picasso.get()
-                                            .load(ImageUrl)
-                                            .centerInside()
-                                            .resize(300, 200)
-                                            .into(holder.ClubImg);
-                                }
-                            }
-                        });
-
-                holder.Comment.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
-                holder.PostCard.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
-                holder.Decs.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
-                holder.ImageView.setOnClickListener(v -> {
-                    Bitmap bitmap = ((BitmapDrawable) holder.ImageView.getDrawable()).getBitmap();
-                    ShowImage(bitmap);
-                });
-
-                holder.clubName.setOnClickListener(v -> {
-                   /*
-                    Intent intent = new Intent(context, Profile.class);
-                    intent.putExtra("UserId", model.getUserId());
-                    context.startActivity(intent);
-                    */
-                    Toast.makeText(getContext(), "profile", Toast.LENGTH_SHORT).show();
-                });
-                holder.ClubImg.setOnClickListener(v -> {
-                    Toast.makeText(getContext(), "profile", Toast.LENGTH_SHORT).show();
-                });
-
-               /*
-               holder.Share.setOnClickListener(v -> {
-                    Intent sendIntent = new Intent();
-                    sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, model.getDyLink());
-                    sendIntent.setType("text/plain");
-                    Intent shareIntent = Intent.createChooser(sendIntent, null);
-                    startActivity(shareIntent);
-                });
-
-                */
-                
-                holder.setLikesButtonStatus(PostId);
-                holder.getCommentsCount(PostId);
-
-                holder.Like.setOnClickListener(v -> {
-                  LikeClick(model.getPostId(), holder.Like);
-                });
-                holder.LikesLayout.setOnClickListener(view ->
-                        LikeClick(model.getPostId(), holder.Like)
-                );
-
-            }
-
-        };
-
-        adapter.notifyDataSetChanged();
-    }
 
     public void LikeClick(String PostId,ImageButton LikeButton){
         IsLiked = true;
