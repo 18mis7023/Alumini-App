@@ -36,8 +36,6 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinksHolder>
         LinksList = linksList;
     }
 
-    public LinksAdapter(){
-    }
 
     @NonNull
     @Override
@@ -49,9 +47,16 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinksHolder>
     @Override
     public void onBindViewHolder(@NonNull LinksHolder holder, @SuppressLint("RecyclerView") int position) {
 
+        String link = LinksList.get(position);
+        if (link.contains("linkedin.com")){
+            Picasso.get()
+                    .load("https://www.keesingtechnologies.com/wp-content/uploads/2018/07/Linkedin-Icon.png")
+                    .into(holder.SocialImage);
+        }else{
             Picasso.get()
                     .load("https://www.google.com/s2/favicons?sz=64&domain_url=" + LinksList.get(position))
                     .into(holder.SocialImage);
+        }
         holder.SocialImage.setOnClickListener(view -> {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(LinksList.get(position)));

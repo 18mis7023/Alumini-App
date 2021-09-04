@@ -97,12 +97,13 @@ public class DiscussionFeedFragment extends Fragment {
         EventsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Query query = fireStore.collection("Posts")
                         .whereEqualTo("Filter","Discussion")
                         .orderBy("Time", Query.Direction.DESCENDING);
                 PagingConfig config =  new PagingConfig(3,1);
-
                 Pagging(query,config);
+
             }
         });
         Memories.setOnClickListener(new View.OnClickListener() {
@@ -115,10 +116,7 @@ public class DiscussionFeedFragment extends Fragment {
                 Query query = fireStore.collection("Posts")
                         .whereEqualTo("Filter","Memories")
                         .orderBy("Time", Query.Direction.DESCENDING);
-
                 PagingConfig config =  new PagingConfig(3,1);
-
-
                 Pagging(query,config);
             }
         });
@@ -134,7 +132,6 @@ public class DiscussionFeedFragment extends Fragment {
                 Pagging(query,config);
             }
         });
-
          */
 
         Query query = fireStore

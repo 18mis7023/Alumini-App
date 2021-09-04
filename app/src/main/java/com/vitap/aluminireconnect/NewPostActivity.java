@@ -30,6 +30,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -149,8 +151,46 @@ public class NewPostActivity extends AppCompatActivity {
         Post.put("Desc", Objects.requireNonNull(Desc_ET.getText()).toString().trim());
         Post.put("UserId", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid() );
         Post.put("Time", FieldValue.serverTimestamp());
+
+        FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setLink(Uri.parse("https://clubsforvitap.web.app/"+PostId)) //need no change url
+                .setDomainUriPrefix("https://aluminireconnect.page.link")
+                .setAndroidParameters(
+                        new DynamicLink
+                                .AndroidParameters
+                                .Builder("com.example.events")
+                                .build())
+                .buildShortDynamicLink()
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+
+                        Uri shortLink = task.getResult().getShortLink();
+                        Post.put("dynamicLink",shortLink.toString());
+
+                        PostKey.set(Post)
+                                .addOnSuccessListener(aVoid -> {
+                                    PD.dismiss();
+                                    startActivity(new Intent(NewPostActivity.this,HomeActivity.class));
+
+                                })
+                                .addOnFailureListener(e -> {
+                                    PD.dismiss();
+                                    Toast.makeText(NewPostActivity.this, "Error : "+e, Toast.LENGTH_SHORT).show();
+                                });
+                    } else {
+                        Log.e("Dynamic link error : ",task.getException().toString());
+                        Toast.makeText(this, ""+task.getException(), Toast.LENGTH_LONG).show();
+                    }
+
+
+
+                });
+
+
+
         PostKey.set(Post)
                 .addOnSuccessListener(aVoid -> {
+
                     PD.dismiss();
                     startActivity(new Intent(NewPostActivity.this,HomeActivity.class));
                 })
