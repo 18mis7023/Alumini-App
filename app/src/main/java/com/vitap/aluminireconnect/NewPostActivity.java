@@ -182,11 +182,7 @@ public class NewPostActivity extends AppCompatActivity {
                         Toast.makeText(this, ""+task.getException(), Toast.LENGTH_LONG).show();
                     }
 
-
-
                 });
-
-
 
         PostKey.set(Post)
                 .addOnSuccessListener(aVoid -> {

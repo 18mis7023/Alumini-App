@@ -37,6 +37,8 @@ import android.widget.Toast;
 import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +49,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldPath;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -58,7 +62,10 @@ import com.vitap.aluminireconnect.model.FeedModel;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class DiscussionFeedFragment extends Fragment {
@@ -75,6 +82,7 @@ public class DiscussionFeedFragment extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     Boolean IsLiked = false;
     private FirestorePagingAdapter<FeedModel,FeedViewHolder> adapter;
+    private List savedList;
 
     public DiscussionFeedFragment() { }
 
@@ -91,6 +99,23 @@ public class DiscussionFeedFragment extends Fragment {
         EventsRecycler = view.findViewById(R.id.feed_recyclerView);
         EventsCard = view.findViewById(R.id.events_card);
         NewsFeedCard = view.findViewById(R.id.news_feed_card);
+        savedList = Arrays.asList(new String[]{""});
+
+        fireStore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()){
+                            try {
+                                DocumentSnapshot snapshot = task.getResult();
+                                savedList = (List) snapshot.get("Saved");
+                            }catch (Exception ex){
+                                savedList = Collections.singletonList("");
+                            }
+                        }
+                    }
+                });
 
 
         /*
@@ -211,6 +236,42 @@ public class DiscussionFeedFragment extends Fragment {
                             }
                         });
 
+                if (savedList.contains(model.getPostId())){
+                    holder.SaveBtn.setImageResource(R.drawable.ic_unsaved);
+                }else holder.SaveBtn.setImageResource(R.drawable.ic_saved);
+
+                holder.SaveBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (savedList != null) {
+                            if (savedList.contains(model.getPostId())) {
+                                holder.SaveBtn.setImageResource(R.drawable.ic_unsaved);
+                                FirebaseFirestore.getInstance()
+                                        .collection("Users")
+                                        .document(UserId)
+                                        .update("Saved", FieldValue.arrayRemove(model.getPostId()));
+                                savedList.remove(model.getPostId());
+                            } else {
+                            FirebaseFirestore.getInstance()
+                                    .collection("Users")
+                                    .document(UserId)
+                                    .update("Saved", FieldValue.arrayUnion(model.getPostId()));
+                            holder.SaveBtn.setImageResource(R.drawable.ic_saved);
+                            savedList.add(model.getPostId());
+                        }
+                        }else {
+                            FirebaseFirestore.getInstance()
+                                    .collection("Users")
+                                    .document(UserId)
+                                    .update("Saved", FieldValue.arrayUnion(model.getPostId()));
+                            holder.SaveBtn.setImageResource(R.drawable.ic_saved);
+                            savedList.add(model.getPostId());
+                        }
+
+                    }
+                });
+
+
                 holder.Comment.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
                 holder.PostCard.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
                 holder.Decs.setOnClickListener(v -> openCommentsActivity(PostId, Desc));
@@ -327,7 +388,7 @@ public class DiscussionFeedFragment extends Fragment {
 
     public class FeedViewHolder extends RecyclerView.ViewHolder {
         TextView FilterText, Decs, time, clubName, likesCount, CommentsCount;
-        android.widget.ImageView ImageView, ClubImg;
+        ImageView ImageView, ClubImg,SaveBtn;
         ImageButton Like, Comment;
         CardView PostCard;
         LinearLayout LikesLayout;
@@ -346,7 +407,7 @@ public class DiscussionFeedFragment extends Fragment {
             CommentsCount = itemView.findViewById(R.id.comment_counter);
             PostCard = itemView.findViewById(R.id.post_card);
             LikesLayout = itemView.findViewById(R.id.likes_layout);
-
+            SaveBtn = itemView.findViewById(R.id.save_button);
         }
 
         public void setLikesButtonStatus(final String postId) {
@@ -429,7 +490,6 @@ public class DiscussionFeedFragment extends Fragment {
         super.onStop();
         adapter.stopListening();
     }
-
 
 
     public void LikeClick(String PostId,ImageButton LikeButton){
