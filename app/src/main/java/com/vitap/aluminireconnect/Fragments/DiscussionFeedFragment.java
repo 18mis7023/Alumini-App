@@ -237,8 +237,8 @@ public class DiscussionFeedFragment extends Fragment {
                         });
 
                 if (savedList.contains(model.getPostId())){
-                    holder.SaveBtn.setImageResource(R.drawable.ic_unsaved);
-                }else holder.SaveBtn.setImageResource(R.drawable.ic_saved);
+                    holder.SaveBtn.setImageResource(R.drawable.ic_saved);
+                }else holder.SaveBtn.setImageResource(R.drawable.ic_unsaved);
 
                 holder.SaveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override

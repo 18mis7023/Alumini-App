@@ -30,6 +30,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.vitap.aluminireconnect.R;
 
@@ -210,6 +211,7 @@ public class AccademicDetailsFragment extends Fragment {
                     UserDetails.put("School",School.getText().toString());
                     UserDetails.put("MobileNumber",MobileNumber.getText().toString());
                     UserDetails.put("EmailId",EmailId.getText().toString());
+                    UserDetails.put("Saved", FieldValue.arrayUnion(""));
                     UserDetails.put("ProfileImage","null");
 
                     SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
